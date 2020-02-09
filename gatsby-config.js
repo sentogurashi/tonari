@@ -2,7 +2,7 @@
 module.exports = {
   siteMetadata: {
     title: `小杉湯となりWeb`,
-    description: `説明文TODO`,
+    description: `小杉湯となりのナイスな説明文がここに入る`,
     author: `ogwtkhr`,
   },
   plugins: [

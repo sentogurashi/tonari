@@ -25,7 +25,7 @@ const IndexPage: React.FC = () => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="小杉湯となり" />
       <p>これから作るぞ〜〜</p>
     </Layout>
   );
