@@ -1,6 +1,6 @@
 // import React from 'react';
 import styled from 'styled-components';
-import { SPACING } from '@/constants';
+import { SPACING, TYPOGRAPHY } from '@/constants';
 
 type HeadingProps = {
   children: string;
@@ -11,6 +11,7 @@ type HeadingProps = {
 // };
 
 export const Heading = styled.h2<HeadingProps>`
+  ${TYPOGRAPHY.MIXIN.DISPLAY}
   font-size: 3rem;
 `;
 

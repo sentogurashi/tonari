@@ -19,6 +19,7 @@ const StyledButton = styled.a`
   min-width: ${STRUCTURE_SPACING.XX_SMALL}px;
   padding: ${SPACING.MIDDLE}px ${SPACING.XXX_LARGE}px;
   border: ${LINE.SHORT_HAND.THIN};
+  border-radius: 100px;
   background-color: ${COLORS.UI_BASE};
   color: ${COLORS.UI_TEXT_DARK_BACKGROUND};
   cursor: pointer;

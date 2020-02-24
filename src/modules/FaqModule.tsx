@@ -57,7 +57,7 @@ export const FaqModule: React.FC = () => {
   );
 };
 
-const Expand = styled.dt`
+const Expand = styled.dl`
   border-bottom: ${LINE.SHORT_HAND.NORMAL};
 
   &:first-child {
