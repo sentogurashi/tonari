@@ -1,16 +1,33 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { useStaticQuery, graphql } from 'gatsby';
 import { Loader } from 'google-maps';
 import { Module } from '@/layouts';
+
+import { GoogleMapsApiQuery } from '@/types';
 
 // import { useGoogleMap } from '@/hooks';
 
 export const AccessModule: React.FC = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
+
+  const data: GoogleMapsApiQuery = useStaticQuery(graphql`
+    query GoogleMapsApi {
+      site {
+        siteMetadata {
+          apiConfig {
+            googleMapsApiKey
+          }
+        }
+      }
+    }
+  `);
+
   useEffect(() => {
     (async (): Promise<void> => {
-      if (process.env.NODE_ENV === 'production') return;
-      const loader = new Loader(process.env.GOOGLE_MAPS_API_KEY);
+      const apiKey = data.site?.siteMetadata?.apiConfig?.googleMapsApiKey;
+      if (!apiKey) return;
+      const loader = new Loader(apiKey);
       const google = await loader.load();
       const position = new google.maps.LatLng(35.708082, 139.648879);
       const map = new google.maps.Map(mapContainerRef.current as HTMLDivElement, {

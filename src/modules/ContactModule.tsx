@@ -4,10 +4,10 @@ import { useStaticQuery, graphql } from 'gatsby';
 // import _ from 'lodash';
 
 import { Module } from '../layouts';
-import { COLORS, SPACING, TYPOGRAPHY, LINE } from '../constants';
+import { SPACING, TYPOGRAPHY, LINE } from '../constants';
 import { Button, ButtonContainer } from '../components';
 
-import { SettingYamlQuery } from '@/types';
+import { ContactSelectOptionsQuery } from '@/types';
 
 type SelectOption = {
   label: string;
@@ -15,8 +15,8 @@ type SelectOption = {
 };
 
 export const ContactModule: React.FC = () => {
-  const data: SettingYamlQuery = useStaticQuery(graphql`
-    query SettingYaml {
+  const data: ContactSelectOptionsQuery = useStaticQuery(graphql`
+    query ContactSelectOptions {
       settingYaml {
         moduleInfo {
           contact {

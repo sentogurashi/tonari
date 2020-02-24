@@ -1,9 +1,17 @@
 /* eslint-disable @typescript-eslint/camelcase */
+
+// https://www.tomawari.com/2019/09/gatsby-env-undefined/#gatsby-configjs
+const env = process.env.NODE_ENV || 'development';
+require('dotenv').config({ path: `./.env.${env}` });
+
 module.exports = {
   siteMetadata: {
     title: '小杉湯となりWeb',
     description: '小杉湯となりのナイスな説明文がここに入る',
     author: 'ogwtkhr',
+    apiConfig: {
+      googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
+    },
   },
   plugins: [
     'gatsby-plugin-typescript',

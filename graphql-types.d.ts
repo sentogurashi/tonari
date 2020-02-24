@@ -1938,6 +1938,7 @@ export type SiteFieldsEnum =
   'siteMetadata___title' |
   'siteMetadata___description' |
   'siteMetadata___author' |
+  'siteMetadata___apiConfig___googleMapsApiKey' |
   'port' |
   'host' |
   'polyfill' |
@@ -2511,12 +2512,22 @@ export type SiteSiteMetadata = {
   title?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
   author?: Maybe<Scalars['String']>,
+  apiConfig?: Maybe<SiteSiteMetadataApiConfig>,
+};
+
+export type SiteSiteMetadataApiConfig = {
+  googleMapsApiKey?: Maybe<Scalars['String']>,
+};
+
+export type SiteSiteMetadataApiConfigFilterInput = {
+  googleMapsApiKey?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
   description?: Maybe<StringQueryOperatorInput>,
   author?: Maybe<StringQueryOperatorInput>,
+  apiConfig?: Maybe<SiteSiteMetadataApiConfigFilterInput>,
 };
 
 export type SiteSortInput = {
@@ -2552,10 +2563,15 @@ export type ComponentsSeoQueryVariables = {};
 
 export type ComponentsSeoQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
-export type SettingYamlQueryVariables = {};
+export type GoogleMapsApiQueryVariables = {};
 
 
-export type SettingYamlQuery = { settingYaml: Maybe<{ moduleInfo: Maybe<{ contact: Maybe<{ selectOptions: Maybe<Array<Maybe<Pick<SettingYamlModuleInfoContactSelectOptions, 'id' | 'label'>>>> }> }> }> };
+export type GoogleMapsApiQuery = { site: Maybe<{ siteMetadata: Maybe<{ apiConfig: Maybe<Pick<SiteSiteMetadataApiConfig, 'googleMapsApiKey'>> }> }> };
+
+export type ContactSelectOptionsQueryVariables = {};
+
+
+export type ContactSelectOptionsQuery = { settingYaml: Maybe<{ moduleInfo: Maybe<{ contact: Maybe<{ selectOptions: Maybe<Array<Maybe<Pick<SettingYamlModuleInfoContactSelectOptions, 'id' | 'label'>>>> }> }> }> };
 
 export type FaqListQueryVariables = {};
 
