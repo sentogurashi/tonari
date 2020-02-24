@@ -1,18 +1,15 @@
 import React from 'react';
 // import styled from 'styled-components';
-
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-
-import '@fullcalendar/core/main.css';
-import '@fullcalendar/daygrid/main.css';
-
+import loadable from '@loadable/component';
 import { Module } from '@/layouts';
+
+// 通常importだとgatsby build時にエラーになる
+const Calendar = loadable(() => import('../components/Calendar'));
 
 export const ScheduleModule: React.FC = () => {
   return (
     <Module title="スケジュール">
-      <FullCalendar defaultView="dayGridMonth" plugins={[dayGridPlugin]} />
+      <Calendar />
     </Module>
   );
 };
