@@ -3,9 +3,10 @@ import React from 'react';
 
 // import { AllWorksYamlQuery } from '../../types/graphql-types';
 
-import Layout from '../components/layout';
 // import Image from '../components/image';
-import SEO from '../components/seo';
+import { BaseLayout, ModuleContainer, SEO } from '@/layouts';
+import { AccessModule, ScheduleModule, ContactModule } from '@/modules';
+// import ContactModule from '../modules/ContactModule';
 
 const IndexPage: React.FC = () => {
   // const data: AllWorksYamlQuery = useStaticQuery(graphql`
@@ -24,10 +25,14 @@ const IndexPage: React.FC = () => {
   // `);
 
   return (
-    <Layout>
+    <BaseLayout>
       <SEO title="トップ" />
-      <p>これから作るぞ〜〜</p>
-    </Layout>
+      <ModuleContainer>
+        <AccessModule />
+        <ScheduleModule />
+        <ContactModule />
+      </ModuleContainer>
+    </BaseLayout>
   );
 };
 

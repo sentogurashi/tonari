@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 
-import { ComponentsImageQuery } from '../../types/graphql-types';
+import { ComponentsImageQuery } from '@/types';
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -15,7 +15,7 @@ import { ComponentsImageQuery } from '../../types/graphql-types';
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Image: React.FC = () => {
+export const Image: React.FC = () => {
   const data: ComponentsImageQuery = useStaticQuery(graphql`
     query ComponentsImage {
       placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {

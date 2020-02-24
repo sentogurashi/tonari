@@ -9,7 +9,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import { ComponentsSeoQuery } from '../../types/graphql-types';
+import { ComponentsSeoQuery } from '@/types';
 
 type MetaItem = JSX.IntrinsicElements['meta'];
 
@@ -20,7 +20,7 @@ type Props = {
   meta?: MetaItem[];
 };
 
-const SEO: React.FC<Props> = ({ title, description, lang = 'en', meta = [] }) => {
+export const SEO: React.FC<Props> = ({ title, description, lang = 'en', meta = [] }) => {
   const { site } = useStaticQuery<ComponentsSeoQuery>(
     graphql`
       query ComponentsSeo {
@@ -79,6 +79,13 @@ const SEO: React.FC<Props> = ({ title, description, lang = 'en', meta = [] }) =>
           content: metaDescription,
         },
         ...meta,
+      ]}
+      link={[
+        {
+          href: 'https://fonts.googleapis.com/css?family=Sawarabi+Gothic&display=swap',
+          rel: 'stylesheet',
+          type: 'text/css',
+        },
       ]}
     />
   );

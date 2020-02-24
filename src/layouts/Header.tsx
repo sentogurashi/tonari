@@ -6,7 +6,7 @@ type Props = {
   siteTitle: string;
 };
 
-const Header: React.FC<Props> = ({ siteTitle }) => (
+export const Header: React.FC<Props> = ({ siteTitle }) => (
   <StyledHeader>
     <HeaderInner>
       <Heading>

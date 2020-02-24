@@ -1,10 +1,11 @@
+/*
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 
 import { WorksYamlQuery } from '../../types/graphql-types';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Layout from '../layout/layout';
+import SEO from '../layout/seo';
 
 type WorkPageProps = {
   data: WorksYamlQuery;
@@ -36,3 +37,4 @@ export const query = graphql`
 `;
 
 export default WorkPage;
+*/

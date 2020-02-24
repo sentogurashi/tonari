@@ -1,0 +1,13 @@
+- moduleInfo:
+    contact:
+      selectOptions:
+        - id: f1
+          label: 1階について
+        - id: f2
+          label: 2階について
+        - id: f3
+          label: 3階について
+        - id: others
+          label: その他お問い合わせ
+        - id: media
+          label: 取材等のお申し込み
