@@ -87,6 +87,12 @@ export const SEO: React.FC<Props> = ({ title, description, lang = 'en', meta = [
           type: 'text/css',
         },
       ]}
+      // script={[
+      //   {
+      //     type: 'text/javascript',
+      //     src: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}`,
+      //   },
+      // ]}
     />
   );
 };
