@@ -2,8 +2,8 @@ import { css } from 'styled-components';
 import { COLORS } from './colors';
 
 const TEXT_SIZE = {
-  SMALL: 14,
-  NORMAL: 16,
+  SMALL: 1.4,
+  NORMAL: 1.6,
 } as const;
 
 const TYPEFACE = {
@@ -13,14 +13,14 @@ const TYPEFACE = {
 
 const MIXIN = {
   BASE: css`
-    color: ${COLORS.UI_TEXT_MAIL};
+    color: ${COLORS.UI_TEXT_MAIN};
     font-family: ${TYPEFACE.BASE};
-    font-size: ${TEXT_SIZE.NORMAL}px;
+    font-size: ${TEXT_SIZE.NORMAL}rem;
   `,
   SUB: css`
     color: ${COLORS.UI_TEXT_SUB};
     font-family: ${TYPEFACE.BASE};
-    font-size: ${TEXT_SIZE.SMALL}px;
+    font-size: ${TEXT_SIZE.SMALL}rem;
   `,
 } as const;
 

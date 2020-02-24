@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Heading } from '@/components';
+import { Heading, HeadingContainer } from '@/components';
 
 type ModuleProps = {
   title?: string;
@@ -10,7 +10,13 @@ type ModuleProps = {
 export const Module: React.FC<ModuleProps> = ({ title, children }) => {
   return (
     <StyledModule>
-      {title ? <Heading>{title}</Heading> : ''}
+      {title ? (
+        <HeadingContainer>
+          <Heading>{title}</Heading>
+        </HeadingContainer>
+      ) : (
+        ''
+      )}
       {children}
     </StyledModule>
   );

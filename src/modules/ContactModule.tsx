@@ -4,8 +4,8 @@ import { useStaticQuery, graphql } from 'gatsby';
 // import _ from 'lodash';
 
 import { Module } from '../layouts';
-import { COLORS, SPACING, TYPOGRAPHY } from '../constants';
-import { Button } from '../components';
+import { COLORS, SPACING, TYPOGRAPHY, LINE } from '../constants';
+import { Button, ButtonContainer } from '../components';
 
 import { SettingYamlQuery } from '@/types';
 
@@ -56,9 +56,11 @@ export const ContactModule: React.FC = () => {
           rows={10}
         />
         <FormControl as="input" type="email" placeholder="メールアドレス" />
-        <Button as="button" type="submit">
-          テスト
-        </Button>
+        <ButtonContainer>
+          <Button as="button" type="submit">
+            確認
+          </Button>
+        </ButtonContainer>
       </form>
     </Module>
   );
@@ -70,20 +72,11 @@ const FormControl = styled.div`
   padding: ${SPACING.MIDDLE}px;
   appearance: none;
   border: none;
-  border-bottom: 1px solid ${COLORS.UI_TEXT_MAIL};
+  border-bottom: ${LINE.SHORT_HAND.NORMAL};
   border-radius: 0;
   outline: none;
   background: none;
   ${TYPOGRAPHY.MIXIN.BASE}
 `;
-
-// const TextInput = styled.input`
-//   padding: 0;
-//   border: none;
-//   border-radius: 0;
-//   outline: none;
-//   background: none;
-//   font-size: 12px;
-// `;
 
 export default ContactModule;
