@@ -11,7 +11,7 @@ type HeadingProps = {
 // };
 
 export const Heading = styled.h2<HeadingProps>`
-  font-size: 4rem;
+  font-size: 3rem;
 `;
 
 export const HeadingContainer = styled.div`
