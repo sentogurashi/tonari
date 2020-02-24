@@ -1938,7 +1938,7 @@ export type SiteFieldsEnum =
   'siteMetadata___title' |
   'siteMetadata___description' |
   'siteMetadata___author' |
-  'siteMetadata___apiConfig___googleMapsApiKey' |
+  'siteMetadata___googleApiKey' |
   'port' |
   'host' |
   'polyfill' |
@@ -2512,22 +2512,14 @@ export type SiteSiteMetadata = {
   title?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
   author?: Maybe<Scalars['String']>,
-  apiConfig?: Maybe<SiteSiteMetadataApiConfig>,
-};
-
-export type SiteSiteMetadataApiConfig = {
-  googleMapsApiKey?: Maybe<Scalars['String']>,
-};
-
-export type SiteSiteMetadataApiConfigFilterInput = {
-  googleMapsApiKey?: Maybe<StringQueryOperatorInput>,
+  googleApiKey?: Maybe<Scalars['String']>,
 };
 
 export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
   description?: Maybe<StringQueryOperatorInput>,
   author?: Maybe<StringQueryOperatorInput>,
-  apiConfig?: Maybe<SiteSiteMetadataApiConfigFilterInput>,
+  googleApiKey?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SiteSortInput = {
@@ -2553,6 +2545,11 @@ export type ComponentsImageQueryVariables = {};
 
 export type ComponentsImageQuery = { placeholderImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
 
+export type GoogleApiKeyQueryVariables = {};
+
+
+export type GoogleApiKeyQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'googleApiKey'>> }> };
+
 export type SiteTitleQueryVariables = {};
 
 
@@ -2562,11 +2559,6 @@ export type ComponentsSeoQueryVariables = {};
 
 
 export type ComponentsSeoQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
-export type GoogleMapsApiQueryVariables = {};
-
-
-export type GoogleMapsApiQuery = { site: Maybe<{ siteMetadata: Maybe<{ apiConfig: Maybe<Pick<SiteSiteMetadataApiConfig, 'googleMapsApiKey'>> }> }> };
 
 export type ContactSelectOptionsQueryVariables = {};
 

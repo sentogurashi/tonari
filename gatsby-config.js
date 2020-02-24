@@ -9,9 +9,7 @@ module.exports = {
     title: '小杉湯となりWeb',
     description: '小杉湯となりのナイスな説明文がここに入る',
     author: 'ogwtkhr',
-    apiConfig: {
-      googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
-    },
+    googleApiKey: process.env.GOOGLE_API_KEY,
   },
   plugins: [
     'gatsby-plugin-typescript',

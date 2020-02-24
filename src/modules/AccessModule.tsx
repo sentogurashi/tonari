@@ -1,31 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { useStaticQuery, graphql } from 'gatsby';
 import { Loader } from 'google-maps';
 import { Module } from '@/layouts';
-
-import { GoogleMapsApiQuery } from '@/types';
-
-// import { useGoogleMap } from '@/hooks';
+import { useGoogleApiKey } from '@/hooks';
 
 export const AccessModule: React.FC = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
-
-  const data: GoogleMapsApiQuery = useStaticQuery(graphql`
-    query GoogleMapsApi {
-      site {
-        siteMetadata {
-          apiConfig {
-            googleMapsApiKey
-          }
-        }
-      }
-    }
-  `);
+  const apiKey = useGoogleApiKey();
 
   useEffect(() => {
     (async (): Promise<void> => {
-      const apiKey = data.site?.siteMetadata?.apiConfig?.googleMapsApiKey;
       if (!apiKey) return;
       const loader = new Loader(apiKey);
       const google = await loader.load();
@@ -58,13 +42,6 @@ export const AccessModule: React.FC = () => {
       });
     })();
   }, []);
-  // useGoogleMap({
-  //   mapContainerRef,
-  //   initialConfig: {
-  //     zoom: 12,
-  //     center: { lat: 35.6432027, lng: 139.6729435 },
-  //   },
-  // });
 
   return (
     <Module title="アクセス・営業案内">
