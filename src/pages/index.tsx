@@ -4,33 +4,31 @@ import React from 'react';
 // import { AllWorksYamlQuery } from '../../types/graphql-types';
 
 // import Image from '../components/image';
-import { BaseLayout, ModuleContainer, SEO } from '@/layouts';
-import { AccessModule, ScheduleModule, ContactModule } from '@/modules';
+import { BaseLayout, ModuleContainer, SEO, HeroImage } from '@/layouts';
+import {
+  ConceptModule,
+  UseCaseModule,
+  AccessModule,
+  FaqModule,
+  ScheduleModule,
+  ContactModule,
+  AboutModule,
+} from '@/modules';
 // import ContactModule from '../modules/ContactModule';
 
 const IndexPage: React.FC = () => {
-  // const data: AllWorksYamlQuery = useStaticQuery(graphql`
-  //   query AllWorksYaml {
-  //     allWorksYaml {
-  //       edges {
-  //         node {
-  //           title
-  //           slug
-  //           category
-  //           year
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
-
   return (
     <BaseLayout>
       <SEO title="トップ" />
+      <HeroImage />
       <ModuleContainer>
+        <ConceptModule />
+        <UseCaseModule />
         <AccessModule />
         <ScheduleModule />
         <ContactModule />
+        <FaqModule />
+        <AboutModule />
       </ModuleContainer>
     </BaseLayout>
   );

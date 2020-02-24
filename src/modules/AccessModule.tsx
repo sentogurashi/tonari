@@ -49,7 +49,7 @@ export const AccessModule: React.FC = () => {
   // });
 
   return (
-    <Module title="アクセス">
+    <Module title="アクセス・営業案内">
       <MapContainer ref={mapContainerRef} />
     </Module>
   );

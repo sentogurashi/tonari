@@ -8,7 +8,7 @@ const TEXT_SIZE = {
 
 const TYPEFACE = {
   // TODO: 英字等
-  BASE: `'Sawarabi Gothic', sans-serif;`,
+  BASE: `'Noto Sans JP', sans-serif;`,
 } as const;
 
 const MIXIN = {
@@ -16,6 +16,7 @@ const MIXIN = {
     color: ${COLORS.UI_TEXT_MAIN};
     font-family: ${TYPEFACE.BASE};
     font-size: ${TEXT_SIZE.NORMAL}rem;
+    font-weight: 500;
   `,
   SUB: css`
     color: ${COLORS.UI_TEXT_SUB};
