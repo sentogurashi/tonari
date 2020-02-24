@@ -1,4 +1,16 @@
 - moduleInfo:
+    faq:
+      faqList:
+        - id: 1
+          question: 質問その1ほげほげほげほげ
+          answer: こたえその1ほげほげほげほげ
+        - id: 2
+          question: 質問その2ほげ
+          answer: こたえその2ほげほげほげほげ
+        - id: 3
+          question: 質問その4
+          answer: こたえその3ほげほげほげほげ
+
     contact:
       selectOptions:
         - id: f1

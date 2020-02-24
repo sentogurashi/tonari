@@ -9,6 +9,7 @@ export const AccessModule: React.FC = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     (async (): Promise<void> => {
+      if (process.env.NODE_ENV === 'production') return;
       const loader = new Loader(process.env.GOOGLE_MAPS_API_KEY);
       const google = await loader.load();
       const position = new google.maps.LatLng(35.708082, 139.648879);

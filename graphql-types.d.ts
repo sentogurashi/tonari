@@ -733,6 +733,7 @@ export type FileFieldsEnum =
   'childSettingYaml___internal___mediaType' |
   'childSettingYaml___internal___owner' |
   'childSettingYaml___internal___type' |
+  'childSettingYaml___moduleInfo___faq___faqList' |
   'childSettingYaml___moduleInfo___contact___selectOptions';
 
 export type FileFilterInput = {
@@ -1713,6 +1714,10 @@ export type SettingYamlFieldsEnum =
   'internal___mediaType' |
   'internal___owner' |
   'internal___type' |
+  'moduleInfo___faq___faqList' |
+  'moduleInfo___faq___faqList___id' |
+  'moduleInfo___faq___faqList___question' |
+  'moduleInfo___faq___faqList___answer' |
   'moduleInfo___contact___selectOptions' |
   'moduleInfo___contact___selectOptions___id' |
   'moduleInfo___contact___selectOptions___label';
@@ -1735,6 +1740,7 @@ export type SettingYamlGroupConnection = {
 };
 
 export type SettingYamlModuleInfo = {
+  faq?: Maybe<SettingYamlModuleInfoFaq>,
   contact?: Maybe<SettingYamlModuleInfoContact>,
 };
 
@@ -1760,7 +1766,32 @@ export type SettingYamlModuleInfoContactSelectOptionsFilterListInput = {
   elemMatch?: Maybe<SettingYamlModuleInfoContactSelectOptionsFilterInput>,
 };
 
+export type SettingYamlModuleInfoFaq = {
+  faqList?: Maybe<Array<Maybe<SettingYamlModuleInfoFaqFaqList>>>,
+};
+
+export type SettingYamlModuleInfoFaqFaqList = {
+  id?: Maybe<Scalars['Int']>,
+  question?: Maybe<Scalars['String']>,
+  answer?: Maybe<Scalars['String']>,
+};
+
+export type SettingYamlModuleInfoFaqFaqListFilterInput = {
+  id?: Maybe<IntQueryOperatorInput>,
+  question?: Maybe<StringQueryOperatorInput>,
+  answer?: Maybe<StringQueryOperatorInput>,
+};
+
+export type SettingYamlModuleInfoFaqFaqListFilterListInput = {
+  elemMatch?: Maybe<SettingYamlModuleInfoFaqFaqListFilterInput>,
+};
+
+export type SettingYamlModuleInfoFaqFilterInput = {
+  faqList?: Maybe<SettingYamlModuleInfoFaqFaqListFilterListInput>,
+};
+
 export type SettingYamlModuleInfoFilterInput = {
+  faq?: Maybe<SettingYamlModuleInfoFaqFilterInput>,
   contact?: Maybe<SettingYamlModuleInfoContactFilterInput>,
 };
 
@@ -2525,6 +2556,11 @@ export type SettingYamlQueryVariables = {};
 
 
 export type SettingYamlQuery = { settingYaml: Maybe<{ moduleInfo: Maybe<{ contact: Maybe<{ selectOptions: Maybe<Array<Maybe<Pick<SettingYamlModuleInfoContactSelectOptions, 'id' | 'label'>>>> }> }> }> };
+
+export type FaqListQueryVariables = {};
+
+
+export type FaqListQuery = { settingYaml: Maybe<{ moduleInfo: Maybe<{ faq: Maybe<{ faqList: Maybe<Array<Maybe<Pick<SettingYamlModuleInfoFaqFaqList, 'id' | 'question' | 'answer'>>>> }> }> }> };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
