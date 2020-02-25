@@ -2,13 +2,13 @@
     faq:
       faqList:
         - id: 1
-          question: 質問その1ほげほげほげほげ
+          question: 銭湯に入らなくても利用できますか？
           answer: こたえその1ほげほげほげほげ
         - id: 2
-          question: 質問その2ほげ
+          question: イベント情報はどこで見られますか？
           answer: こたえその2ほげほげほげほげ
         - id: 3
-          question: 質問その4
+          question: 荷物を置いて銭湯へ行くことは可能ですか？
           answer: こたえその3ほげほげほげほげ
 
     contact:

@@ -1,9 +1,104 @@
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
+import media from 'styled-media-query';
+import { useStaticQuery, graphql } from 'gatsby';
+import GatsbyImage, { FluidObject } from 'gatsby-image';
+
 import { Module } from '@/layouts';
+import { UseCaseImagesQuery } from '@/types';
+import { STRUCTURE_SPACING, SPACING, TYPOGRAPHY, SCREEN_TYPE, BIG_SPACING } from '@/constants';
 
 export const UseCaseModule: React.FC = () => {
-  return <Module title="1、2、3階の使いかた"></Module>;
+  const data: UseCaseImagesQuery = useStaticQuery(graphql`
+    query UseCaseImages {
+      placeholderImage: file(relativePath: { eq: "usecase_1f.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 2000) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `);
+
+  return (
+    <Module size="large">
+      <Container>
+        <TextContainer>
+          <Heading>1Fについての見出し</Heading>
+          <MainText>
+            1Fについての本文。1Fについての本文。1Fについての本文。1Fについての本文。1Fについての本文。
+          </MainText>
+        </TextContainer>
+        <ImageContainer>
+          <Image fluid={data?.placeholderImage?.childImageSharp?.fluid as FluidObject} />
+        </ImageContainer>
+      </Container>
+      <Container>
+        <TextContainer layout="right">
+          <Heading>2Fについての見出し</Heading>
+          <MainText>
+            2Fについての本文。2Fについての本文。2Fについての本文。2Fについての本文。2Fについての本文。
+          </MainText>
+        </TextContainer>
+        <ImageContainer layout="right">
+          <Image fluid={data?.placeholderImage?.childImageSharp?.fluid as FluidObject} />
+        </ImageContainer>
+      </Container>
+      <Container>
+        <TextContainer>
+          <Heading>3Fについての見出し</Heading>
+          <MainText>
+            3Fについての本文。3Fについての本文。3Fについての本文。3Fについての本文。3Fについての本文。
+          </MainText>
+        </TextContainer>
+        <ImageContainer>
+          <Image fluid={data?.placeholderImage?.childImageSharp?.fluid as FluidObject} />
+        </ImageContainer>
+      </Container>
+    </Module>
+  );
 };
+
+const Image = styled(GatsbyImage)``;
+
+type ImageContainerProps = {
+  layout?: 'left' | 'right';
+};
+
+const ImageContainer = styled.div<ImageContainerProps>`
+  max-width: ${STRUCTURE_SPACING.X_LARGE}px;
+  ${({ layout }): string => (layout === 'right' ? 'margin-right' : 'margin-left')}: auto;
+`;
+
+type TextContainerProps = {
+  layout?: 'left' | 'right';
+};
+
+const TextContainer = styled.div<TextContainerProps>`
+  ${media.greaterThan(SCREEN_TYPE.MEDIUM)`
+    position: absolute;
+    z-index: 1;
+    top: 0;
+  `}
+  ${({ layout }): string => (layout === 'right' ? 'right' : 'left')}: 0;
+`;
+
+const Heading = styled.h3`
+  margin-bottom: ${SPACING.NORMAL}px;
+  font-size: ${TYPOGRAPHY.TEXT_SIZE.X_LARGE}rem;
+`;
+
+const MainText = styled.p`
+  max-width: ${STRUCTURE_SPACING.SMALL}px;
+`;
+
+const Container = styled.div`
+  position: relative;
+
+  & + & {
+    margin-top: ${BIG_SPACING.NORMAL}px;
+  }
+`;
 
 export default UseCaseModule;

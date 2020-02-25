@@ -1,37 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { Module } from '@/layouts';
-import { SPACING, TYPOGRAPHY } from '@/constants';
+import { SPACING, TYPOGRAPHY, SCREEN_TYPE } from '@/constants';
 
 export const ConceptModule: React.FC = () => {
   return (
     <Module>
       <ConceptTextContainer>
+        <Paragraph>くらしに、あたたかな余白を。</Paragraph>
         <Paragraph>
-          はじめに、湯ありき。
+          湯が、日々のとなりに在るということ。
           <br />
-          そこは満たされる場所。空っぽにもなれる場所。
+          そこで満たされ、そして、空っぽになるということ。
         </Paragraph>
         <Paragraph>
-          お風呂で汗を流したあとに、最高の一杯を頂くこと。
+          お風呂で汗を流し、最高の一杯を頂くこと。
           <br />
           しっかり食べること、ゆっくり休むこと、じっくり働くこと。
         </Paragraph>
         <Paragraph>
-          ひとりで寛いでもいい。みんなで楽しんでもいい。 銭湯という&quot;源&quot;から、
+          ひとりで寛いでもいい、みんなで楽しんでもいい。
           <br />
-          あたたかなくらしが 溢れるように広がっていくこと。
-        </Paragraph>
-        <Paragraph>
-          お風呂で過ごす、「余白」の時間。
+          銭湯という“源”から、あたたかな余白が
           <br />
-          そんなしあわせな余白は、まだまだ広げられる。
+          あふれるように広がっていく。
         </Paragraph>
         <Paragraph>
           さあ、銭湯という場を、あなたのくらしに。
           <br />
           あたらしい時を、そのとなりに。
         </Paragraph>
+        <Paragraph>
+          さあ、銭湯という場を、あなたのくらしに。
+          <br />
+          あたらしい時を、そのとなりに。
+        </Paragraph>
+        <Paragraph>小杉湯 となり</Paragraph>
       </ConceptTextContainer>
     </Module>
   );
@@ -39,9 +44,14 @@ export const ConceptModule: React.FC = () => {
 
 const Paragraph = styled.p`
   margin: ${SPACING.XX_LARGE}px 0;
-  font-size: 1.8rem;
   line-height: ${TYPOGRAPHY.LINE_HEIGHT.THICK};
   text-align: center;
+  ${media.greaterThan(SCREEN_TYPE.MEDIUM)`
+    font-size: 1.8rem;
+  `}
+  ${media.lessThan(SCREEN_TYPE.SMALL)`
+    font-size: 1.5rem;
+  `}
 `;
 
 const ConceptTextContainer = styled.section``;

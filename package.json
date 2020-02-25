@@ -23,7 +23,8 @@
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
     "reset.css": "^2.0.2",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
     "@types/googlemaps": "^3.39.3",

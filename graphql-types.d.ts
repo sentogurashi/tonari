@@ -2570,6 +2570,11 @@ export type FaqListQueryVariables = {};
 
 export type FaqListQuery = { settingYaml: Maybe<{ moduleInfo: Maybe<{ faq: Maybe<{ faqList: Maybe<Array<Maybe<Pick<SettingYamlModuleInfoFaqFaqList, 'id' | 'question' | 'answer'>>>> }> }> }> };
 
+export type UseCaseImagesQueryVariables = {};
+
+
+export type UseCaseImagesQuery = { placeholderImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
+
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 export type GatsbyImageSharpFixed_TracedSvgFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
