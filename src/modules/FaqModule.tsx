@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-// import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import styled from 'styled-components';
+import { Plus, Minus } from 'styled-icons/boxicons-regular';
 import { Module } from '@/layouts';
 
 import { FaqListQuery } from '@/types';
@@ -46,7 +46,12 @@ export const FaqModule: React.FC = () => {
           return (
             <Expand key={id}>
               <ExpandTitle onClick={(): void => setCurrentFaqId(isOpen ? null : id)}>
-                {question}
+                <FlexItem shrink={1}>{question}</FlexItem>
+                <FlexItem shrink={0}>
+                  <IconContainer>
+                    {isOpen ? <Minus iconVerticalAlign="top" /> : <Plus iconVerticalAlign="top" />}
+                  </IconContainer>
+                </FlexItem>
               </ExpandTitle>
               {isOpen && <ExpandContent>{answer}</ExpandContent>}
             </Expand>
@@ -65,10 +70,26 @@ const Expand = styled.dl`
   }
 `;
 
+const IconContainer = styled.div`
+  width: ${SPACING.LARGE}px;
+  height: ${SPACING.LARGE}px;
+`;
+
 const ExpandTitle = styled.dt`
-  display: block;
+  display: flex;
+  justify-content: space-between;
   padding: ${SPACING.LARGE}px;
   cursor: pointer;
+`;
+
+type FlexItemProps = {
+  shrink: number;
+};
+
+const FlexItem = styled.div<FlexItemProps>`
+  display: flex;
+  flex-shrink: ${({ shrink }): number => shrink};
+  align-items: center;
 `;
 
 const ExpandContent = styled.dd`

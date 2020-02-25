@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { Loader } from 'google-maps';
 import { Module } from '@/layouts';
 import { useGoogleApiKey } from '@/hooks';
+import { SCREEN_TYPE } from '@/constants';
 
 export const AccessModule: React.FC = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -57,6 +59,9 @@ const MapContainer = styled.div`
     content: '';
     display: block;
     padding-bottom: 60%;
+    ${media.lessThan(SCREEN_TYPE.SMALL)`
+      padding-bottom: 120%;
+    `}
   }
 `;
 

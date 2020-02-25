@@ -24,6 +24,7 @@
     "react-helmet": "^5.2.1",
     "reset.css": "^2.0.2",
     "styled-components": "^5.0.1",
+    "styled-icons": "^9.5.0",
     "styled-media-query": "^2.1.2"
   },
   "devDependencies": {

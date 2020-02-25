@@ -18,7 +18,12 @@ export const Calendar: React.FC = () => {
       plugins={[dayGridPlugin, googleCalendarPlugin]}
       googleCalendarApiKey={googleApiKey}
       events={{
-        googleCalendarId: 'japanese__ja@holiday.calendar.google.com',
+        googleCalendarId: 'ko87l1hpib0gdb3uet26432eak@group.calendar.google.com',
+      }}
+      titleFormat={{
+        // https://fullcalendar.io/docs/date-formatting
+        month: 'numeric',
+        year: 'numeric',
       }}
     />
   );
