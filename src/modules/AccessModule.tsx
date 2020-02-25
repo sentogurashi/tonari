@@ -60,7 +60,7 @@ const MapContainer = styled.div`
     display: block;
     padding-bottom: 60%;
     ${media.lessThan(SCREEN_TYPE.SMALL)`
-      padding-bottom: 120%;
+      padding-bottom: 100%;
     `}
   }
 `;

@@ -47,6 +47,9 @@ export const ContactModule: React.FC = () => {
             </option>
           ))}
         </FormControl>
+        <FormControl as="input" type="email" placeholder="メールアドレス" />
+        <FormControl as="input" type="text" placeholder="会社名" />
+        <FormControl as="input" type="text" placeholder="お名前" />
         <FormControl
           as="textarea"
           placeholder="お問い合わせ内容"
@@ -55,7 +58,6 @@ export const ContactModule: React.FC = () => {
           cols={30}
           rows={10}
         />
-        <FormControl as="input" type="email" placeholder="メールアドレス" />
         <ButtonContainer>
           <Button as="button" type="submit">
             確認
