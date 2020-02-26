@@ -47,7 +47,7 @@ const Paragraph = styled.p`
   ${media.greaterThan(SCREEN_TYPE.MEDIUM)`
     text-align: center;
   `}
-  ${media.lessThan(SCREEN_TYPE.SMALL)`
+  ${media.lessThan(SCREEN_TYPE.MEDIUM)`
     & br {
       display: none;
     }

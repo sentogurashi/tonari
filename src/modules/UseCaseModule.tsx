@@ -6,7 +6,14 @@ import GatsbyImage, { FluidObject } from 'gatsby-image';
 
 import { Module } from '@/layouts';
 import { UseCaseImagesQuery } from '@/types';
-import { STRUCTURE_SPACING, SPACING, TYPOGRAPHY, SCREEN_TYPE, BIG_SPACING } from '@/constants';
+import {
+  STRUCTURE_SPACING,
+  SPACING,
+  TYPOGRAPHY,
+  SCREEN_TYPE,
+  BIG_SPACING,
+  RELATIVE_SPACING,
+} from '@/constants';
 
 export const UseCaseModule: React.FC = () => {
   const data: UseCaseImagesQuery = useStaticQuery(graphql`
@@ -22,7 +29,7 @@ export const UseCaseModule: React.FC = () => {
   `);
 
   return (
-    <Module size="large">
+    <Module size="large" withSpHorizontalSpacing={false}>
       <Container>
         <TextContainer>
           <Heading>1Fについての見出し</Heading>
@@ -60,7 +67,16 @@ export const UseCaseModule: React.FC = () => {
   );
 };
 
-const Image = styled(GatsbyImage)``;
+const Image = styled(GatsbyImage)`
+  ${media.lessThan(SCREEN_TYPE.MEDIUM)`
+    width: 800px;
+    left: 50%;
+    transform: translateX(-50%);
+  `}
+  ${media.lessThan(SCREEN_TYPE.SMALL)`
+    width: 500px;
+  `}
+`;
 
 type ImageContainerProps = {
   layout?: 'left' | 'right';
@@ -69,17 +85,22 @@ type ImageContainerProps = {
 const ImageContainer = styled.div<ImageContainerProps>`
   max-width: ${STRUCTURE_SPACING.X_LARGE}px;
   ${({ layout }): string => (layout === 'right' ? 'margin-right' : 'margin-left')}: auto;
+  overflow: hidden;
 `;
 
 type TextContainerProps = {
   layout?: 'left' | 'right';
 };
 
+// ブレイクポイント共通化
 const TextContainer = styled.div<TextContainerProps>`
   ${media.greaterThan(SCREEN_TYPE.MEDIUM)`
     position: absolute;
     z-index: 1;
     top: 0;
+  `}
+  ${media.lessThan(SCREEN_TYPE.MEDIUM)`
+    padding: 0 ${RELATIVE_SPACING.NORMAL}vw;
   `}
   ${({ layout }): string => (layout === 'right' ? 'right' : 'left')}: 0;
 `;

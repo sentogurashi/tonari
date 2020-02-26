@@ -49,7 +49,7 @@ const Paragraph = styled.p`
   ${media.greaterThan(SCREEN_TYPE.MEDIUM)`
     font-size: 1.8rem;
   `}
-  ${media.lessThan(SCREEN_TYPE.SMALL)`
+  ${media.lessThan(SCREEN_TYPE.MEDIUM)`
     font-size: 1.5rem;
   `}
   &:last-of-type {

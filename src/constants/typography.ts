@@ -29,7 +29,7 @@ const MIXIN = {
     ${media.greaterThan(SCREEN_TYPE.MEDIUM)`
       font-size: ${TEXT_SIZE.NORMAL}rem;
     `}
-    ${media.lessThan(SCREEN_TYPE.SMALL)`
+    ${media.lessThan(SCREEN_TYPE.MEDIUM)`
         font-size: ${TEXT_SIZE.SMALL}rem;
     `}
     font-weight: 500;

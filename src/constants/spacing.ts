@@ -1,6 +1,7 @@
 const BASE_SPACING = 8;
 const BASE_BIG_SPACING = 96;
 const BASE_STRUCTURE_SPACING = 480;
+const BASE_RELATIVE_SPACING = 5;
 
 // export const SPACING = {
 //   BASE_SPACING,
@@ -52,3 +53,15 @@ export const STRUCTURE_SPACING = {
 } as const;
 
 export default SPACING;
+
+export const RELATIVE_SPACING = {
+  BASE: BASE_RELATIVE_SPACING,
+  // XX_SMALL: 192,
+  // X_SMALL: 288,
+  // SMALL: 384,
+  NORMAL: BASE_RELATIVE_SPACING,
+  // MIDDLE: 576,
+  // LARGE: 672,
+  // X_LARGE: 768,
+  // XX_LARGE: 864,
+} as const;

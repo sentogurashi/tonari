@@ -76,7 +76,7 @@ const MapContainer = styled.div`
     content: '';
     display: block;
     padding-bottom: 60%;
-    ${media.lessThan(SCREEN_TYPE.SMALL)`
+    ${media.lessThan(SCREEN_TYPE.MEDIUM)`
       padding-bottom: 100%;
     `}
   }
@@ -96,7 +96,7 @@ const ListLabel = styled.dt`
     display: inline-block;
     width: 200px;
   `}
-  ${media.lessThan(SCREEN_TYPE.SMALL)`
+  ${media.lessThan(SCREEN_TYPE.MEDIUM)`
     width: 100%;
   `}
   margin-bottom: ${SPACING.NORMAL}px;
