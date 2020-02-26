@@ -6,7 +6,7 @@ import { Plus, Minus } from 'styled-icons/boxicons-regular';
 import { Module } from '@/layouts';
 
 import { FaqListQuery } from '@/types';
-import { SPACING, LINE } from '@/constants';
+import { SPACING, LINE, ANIMATION, OPACITY } from '@/constants';
 import { IntersectionFadeIn } from '@/animations';
 
 type FaqItem = {
@@ -86,7 +86,12 @@ const ExpandTitle = styled.dt`
   display: flex;
   justify-content: space-between;
   padding: ${SPACING.LARGE}px;
+  transition: opacity ${ANIMATION.HOVER_TRANSITION_NORMAL};
   cursor: pointer;
+
+  &:hover {
+    opacity: ${OPACITY.HOVER_NORMAL};
+  }
 `;
 
 type FlexItemProps = {

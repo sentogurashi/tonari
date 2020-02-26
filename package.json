@@ -21,6 +21,7 @@
     "google-maps": "^4.2.3",
     "intersection-observer": "^0.7.0",
     "lodash": "^4.17.15",
+    "polished": "^3.4.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
