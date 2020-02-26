@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { Module } from '@/layouts';
-import { SPACING, TYPOGRAPHY } from '@/constants';
+import { SPACING, TYPOGRAPHY, SCREEN_TYPE } from '@/constants';
+import { Button, ButtonContainer } from '@/components';
 
 export const AboutModule: React.FC = () => {
   return (
@@ -28,15 +30,31 @@ export const AboutModule: React.FC = () => {
       <Paragraph>
         建主が小杉湯、事業主体が銭湯ぐらしという座組で、運営を行うことになった。
       </Paragraph>
+      <ButtonContainer>
+        <Button as="a" href="http://sentogurashi.com/" target="_blank">
+          銭湯ぐらしについて
+        </Button>
+        <a href=""></a>
+      </ButtonContainer>
     </Module>
   );
 };
 
 const Paragraph = styled.p`
-  margin: ${SPACING.XX_LARGE}px 0;
+  margin-bottom: ${SPACING.XX_LARGE}px;
   font-size: ${TYPOGRAPHY.TEXT_SIZE.SMALL}rem;
   line-height: ${TYPOGRAPHY.LINE_HEIGHT.THICK};
-  text-align: center;
+  ${media.greaterThan(SCREEN_TYPE.MEDIUM)`
+    text-align: center;
+  `}
+  ${media.lessThan(SCREEN_TYPE.SMALL)`
+    & br {
+      display: none;
+    }
+  `}
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 `;
 
 export default AboutModule;

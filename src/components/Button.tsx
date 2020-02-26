@@ -8,6 +8,8 @@ type ButtonTypeName = 'submit' | 'reset' | 'button';
 type ButtonProps = {
   as?: ButtonElementName;
   type?: ButtonTypeName;
+  href?: string;
+  target?: string;
 };
 
 export const Button: React.FC<ButtonProps> = props => {
@@ -22,6 +24,7 @@ const StyledButton = styled.a`
   border-radius: 100px;
   background-color: ${COLORS.UI_BASE};
   color: ${COLORS.UI_TEXT_DARK_BACKGROUND};
+  text-decoration: none;
   cursor: pointer;
 `;
 

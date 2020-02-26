@@ -43,7 +43,7 @@ export const ConceptModule: React.FC = () => {
 };
 
 const Paragraph = styled.p`
-  margin: ${SPACING.XX_LARGE}px 0;
+  margin-bottom: ${SPACING.XX_LARGE}px;
   line-height: ${TYPOGRAPHY.LINE_HEIGHT.THICK};
   text-align: center;
   ${media.greaterThan(SCREEN_TYPE.MEDIUM)`
@@ -52,6 +52,9 @@ const Paragraph = styled.p`
   ${media.lessThan(SCREEN_TYPE.SMALL)`
     font-size: 1.5rem;
   `}
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 `;
 
 const ConceptTextContainer = styled.section``;
