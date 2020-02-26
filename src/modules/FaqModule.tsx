@@ -7,6 +7,7 @@ import { Module } from '@/layouts';
 
 import { FaqListQuery } from '@/types';
 import { SPACING, LINE } from '@/constants';
+import { IntersectionFadeIn } from '@/animations';
 
 type FaqItem = {
   id: number;
@@ -40,24 +41,30 @@ export const FaqModule: React.FC = () => {
   const faqList: FaqList = faqListBase ? (faqListBase as FaqList) : [];
   return (
     <Module title="よくある質問">
-      <div>
-        {faqList.map(({ id, question, answer }) => {
-          const isOpen = currentFaqId === id;
-          return (
-            <Expand key={id}>
-              <ExpandTitle onClick={(): void => setCurrentFaqId(isOpen ? null : id)}>
-                <FlexItem shrink={1}>{question}</FlexItem>
-                <FlexItem shrink={0}>
-                  <IconContainer>
-                    {isOpen ? <Minus iconVerticalAlign="top" /> : <Plus iconVerticalAlign="top" />}
-                  </IconContainer>
-                </FlexItem>
-              </ExpandTitle>
-              {isOpen && <ExpandContent>{answer}</ExpandContent>}
-            </Expand>
-          );
-        })}
-      </div>
+      <IntersectionFadeIn>
+        <div>
+          {faqList.map(({ id, question, answer }) => {
+            const isOpen = currentFaqId === id;
+            return (
+              <Expand key={id}>
+                <ExpandTitle onClick={(): void => setCurrentFaqId(isOpen ? null : id)}>
+                  <FlexItem shrink={1}>{question}</FlexItem>
+                  <FlexItem shrink={0}>
+                    <IconContainer>
+                      {isOpen ? (
+                        <Minus iconVerticalAlign="top" />
+                      ) : (
+                        <Plus iconVerticalAlign="top" />
+                      )}
+                    </IconContainer>
+                  </FlexItem>
+                </ExpandTitle>
+                {isOpen && <ExpandContent>{answer}</ExpandContent>}
+              </Expand>
+            );
+          })}
+        </div>
+      </IntersectionFadeIn>
     </Module>
   );
 };

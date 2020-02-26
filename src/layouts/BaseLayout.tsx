@@ -11,6 +11,7 @@ import styled from 'styled-components';
 
 import { Footer } from './Footer';
 import { GlobalStyle } from './GlobalStyle';
+import 'intersection-observer';
 import 'reset.css';
 
 import { SiteTitleQuery } from '@/types';

@@ -14,6 +14,7 @@ import {
   BIG_SPACING,
   RELATIVE_SPACING,
 } from '@/constants';
+import { IntersectionFadeIn } from '@/animations';
 
 export const UseCaseModule: React.FC = () => {
   const data: UseCaseImagesQuery = useStaticQuery(graphql`
@@ -121,12 +122,18 @@ const MainText = styled.p`
   max-width: ${STRUCTURE_SPACING.SMALL}px;
 `;
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   position: relative;
 
   & + & {
     margin-top: ${BIG_SPACING.NORMAL}px;
   }
 `;
+
+const Container: React.FC = ({ children }) => (
+  <IntersectionFadeIn>
+    <StyledContainer>{children}</StyledContainer>
+  </IntersectionFadeIn>
+);
 
 export default UseCaseModule;

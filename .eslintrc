@@ -32,6 +32,7 @@
   "globals": {
     "window": true,
     "document": true,
+    "IntersectionObserver": true,
     "google": true
   }
 }
