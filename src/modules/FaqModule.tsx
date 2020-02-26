@@ -71,8 +71,8 @@ const Expand = styled.dl`
 `;
 
 const IconContainer = styled.div`
-  width: ${SPACING.LARGE}px;
-  height: ${SPACING.LARGE}px;
+  width: ${SPACING.X_LARGE}px;
+  height: ${SPACING.X_LARGE}px;
 `;
 
 const ExpandTitle = styled.dt`

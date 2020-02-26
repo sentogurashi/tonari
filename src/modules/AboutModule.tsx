@@ -42,7 +42,7 @@ export const AboutModule: React.FC = () => {
 
 const Paragraph = styled.p`
   margin-bottom: ${SPACING.XX_LARGE}px;
-  font-size: ${TYPOGRAPHY.TEXT_SIZE.SMALL}rem;
+  /* font-size: ${TYPOGRAPHY.TEXT_SIZE.SMALL}rem; */
   line-height: ${TYPOGRAPHY.LINE_HEIGHT.THICK};
   ${media.greaterThan(SCREEN_TYPE.MEDIUM)`
     text-align: center;
