@@ -18,7 +18,14 @@ import {
 export const UseCaseModule: React.FC = () => {
   const data: UseCaseImagesQuery = useStaticQuery(graphql`
     query UseCaseImages {
-      placeholderImage: file(relativePath: { eq: "usecase_1f.png" }) {
+      useCase1FImage: file(relativePath: { eq: "usecase_1f.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 2000) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      useCase2FImage: file(relativePath: { eq: "usecase_2f.png" }) {
         childImageSharp {
           fluid(maxWidth: 2000) {
             ...GatsbyImageSharpFluid
@@ -38,7 +45,7 @@ export const UseCaseModule: React.FC = () => {
           </MainText>
         </TextContainer>
         <ImageContainer>
-          <Image fluid={data?.placeholderImage?.childImageSharp?.fluid as FluidObject} />
+          <Image fluid={data?.useCase1FImage?.childImageSharp?.fluid as FluidObject} />
         </ImageContainer>
       </Container>
       <Container>
@@ -49,7 +56,7 @@ export const UseCaseModule: React.FC = () => {
           </MainText>
         </TextContainer>
         <ImageContainer layout="right">
-          <Image fluid={data?.placeholderImage?.childImageSharp?.fluid as FluidObject} />
+          <Image fluid={data?.useCase2FImage?.childImageSharp?.fluid as FluidObject} />
         </ImageContainer>
       </Container>
       <Container>
@@ -60,7 +67,7 @@ export const UseCaseModule: React.FC = () => {
           </MainText>
         </TextContainer>
         <ImageContainer>
-          <Image fluid={data?.placeholderImage?.childImageSharp?.fluid as FluidObject} />
+          <Image fluid={data?.useCase1FImage?.childImageSharp?.fluid as FluidObject} />
         </ImageContainer>
       </Container>
     </Module>

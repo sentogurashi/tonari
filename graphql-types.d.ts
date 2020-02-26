@@ -2569,7 +2569,7 @@ export type FaqListQuery = { settingYaml: Maybe<{ moduleInfo: Maybe<{ faq: Maybe
 export type UseCaseImagesQueryVariables = {};
 
 
-export type UseCaseImagesQuery = { placeholderImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
+export type UseCaseImagesQuery = { useCase1FImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<GatsbyImageSharpFluidFragment> }> }>, useCase2FImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
