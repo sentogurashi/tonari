@@ -124,10 +124,7 @@ const MainText = styled.p`
 
 const StyledContainer = styled.div`
   position: relative;
-
-  & + & {
-    margin-top: ${BIG_SPACING.NORMAL}px;
-  }
+  margin-bottom: ${SPACING.XXX_LARGE}px;
 `;
 
 const Container: React.FC = ({ children }) => (
