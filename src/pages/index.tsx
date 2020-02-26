@@ -1,9 +1,6 @@
 import React from 'react';
 // import { Link, graphql, useStaticQuery } from 'gatsby';
 
-// import { AllWorksYamlQuery } from '../../types/graphql-types';
-
-// import Image from '../components/image';
 import { BaseLayout, ModuleContainer, SEO, HeroImage } from '@/layouts';
 import {
   ConceptModule,
@@ -14,7 +11,6 @@ import {
   ContactModule,
   AboutModule,
 } from '@/modules';
-// import ContactModule from '../modules/ContactModule';
 
 const IndexPage: React.FC = () => {
   return (
@@ -26,9 +22,9 @@ const IndexPage: React.FC = () => {
         <UseCaseModule />
         <AccessModule />
         <ScheduleModule />
-        <ContactModule />
         <FaqModule />
         <AboutModule />
+        <ContactModule />
       </ModuleContainer>
     </BaseLayout>
   );
