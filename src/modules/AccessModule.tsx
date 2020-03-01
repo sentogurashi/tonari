@@ -1,51 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
-import { Loader } from 'google-maps';
 import { Module } from '@/layouts';
-import { useGoogleApiKey } from '@/hooks';
+import { GoogleMap } from '@/components';
 import { SCREEN_TYPE, SPACING, COLORS } from '@/constants';
 import { IntersectionFadeIn } from '@/animations';
 
 export const AccessModule: React.FC = () => {
-  const mapContainerRef = useRef<HTMLDivElement>(null);
-  const apiKey = useGoogleApiKey();
-
-  useEffect(() => {
-    (async (): Promise<void> => {
-      if (!apiKey) return;
-      const loader = new Loader(apiKey);
-      const google = await loader.load();
-      const position = new google.maps.LatLng(35.708082, 139.648879);
-      const map = new google.maps.Map(mapContainerRef.current as HTMLDivElement, {
-        zoom: 16,
-        center: position,
-        scrollwheel: false,
-        // disable UI controls
-        mapTypeControl: false,
-        scaleControl: false,
-        streetViewControl: false,
-        rotateControl: false,
-        fullscreenControl: false,
-      });
-      map.setOptions({
-        styles: [
-          {
-            stylers: [
-              {
-                saturation: -100,
-              },
-            ],
-          },
-        ],
-      });
-      const marker = new google.maps.Marker({
-        position,
-        map,
-      });
-    })();
-  }, []);
-
   return (
     <Module title="アクセス・営業案内">
       <IntersectionFadeIn>
@@ -54,7 +15,7 @@ export const AccessModule: React.FC = () => {
           <br />
           JR中央線「高円寺」駅 徒歩5分
         </MainText>
-        <MapContainer ref={mapContainerRef} />
+        <GoogleMap />
         <List>
           <ListLabel>営業時間</ListLabel>
           <ListContent>
@@ -71,19 +32,6 @@ export const AccessModule: React.FC = () => {
     </Module>
   );
 };
-
-const MapContainer = styled.div`
-  width: 100%;
-
-  &::before {
-    content: '';
-    display: block;
-    padding-bottom: 60%;
-    ${media.lessThan(SCREEN_TYPE.MEDIUM)`
-      padding-bottom: 100%;
-    `}
-  }
-`;
 
 const baseTextStyle = css`
   margin-bottom: ${SPACING.XX_LARGE}px;
@@ -113,10 +61,6 @@ const ListContent = styled.dd``;
 const List = styled.dl`
   margin-top: ${SPACING.XX_LARGE}px;
   ${baseTextStyle}
-`;
-
-const FlexBox = styled.div`
-  display: flex;
 `;
 
 export default AccessModule;

@@ -6,8 +6,9 @@ require('dotenv').config({ path: `./.env.${env}` });
 
 module.exports = {
   siteMetadata: {
-    title: '小杉湯となりWeb',
-    description: '小杉湯となりのナイスな説明文がここに入る',
+    title: '小杉湯となり',
+    description:
+      '杉並区・高円寺にある銭湯「小杉湯」のとなり。銭湯が街のお風呂であるように、街に開かれたもう一つの家のような場所です。',
     author: 'ogwtkhr',
     googleApiKey: process.env.GOOGLE_API_KEY,
   },

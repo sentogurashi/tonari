@@ -6,7 +6,7 @@ import media from 'styled-media-query';
 import { rgba } from 'polished';
 
 import { BaseLayout, SEO } from '@/layouts';
-import { Logo } from '@/components';
+import { Logo, GoogleMap } from '@/components';
 import { SCREEN_TYPE } from '@/constants';
 
 import { TeaserInfoQuery } from '@/types';
@@ -49,13 +49,25 @@ const IndexPage: React.FC = () => {
           />
         </HeroImageInner>
       </HeroImage>
-      <MainHeading>「小杉湯となり」プレオープンのお知らせ</MainHeading>
+      <MainHeading>
+        「小杉湯となり」
+        <br />
+        プレオープンのお知らせ
+      </MainHeading>
       <MainTextContainer>
         {mainTexts.map(
           ({ heading, body }): JSX.Element => (
-            <MainText key={heading} heading={heading} body={body} />
+            <NormalModule key={heading} heading={heading} body={body} />
           ),
         )}
+        <NormalModule heading="アクセス">
+          <AccessTextBody>
+            〒166-0002 東京都杉並区高円寺北3丁目32−16−2
+            <br />
+            JR中央線「高円寺」駅 徒歩5分
+          </AccessTextBody>
+          <GoogleMap />
+        </NormalModule>
       </MainTextContainer>
       <FlexContainer>
         <Button href="#">お問い合わせ</Button>
@@ -63,18 +75,6 @@ const IndexPage: React.FC = () => {
     </BaseLayout>
   );
 };
-
-type MainText = {
-  heading: string;
-  body: string;
-};
-
-const MainText: React.FC<MainText> = ({ heading, body }) => (
-  <StyledMainText>
-    <MainTextHeading>{heading}</MainTextHeading>
-    <MainTextBody>{body}</MainTextBody>
-  </StyledMainText>
-);
 
 const ABSTRACT_BLACK = '#000000';
 const ABSTRACT_WHITE = '#ffffff';
@@ -93,7 +93,22 @@ const COLOR = {
   UI_TEXT_WITH_DARK_BACKGROUND: ABSTRACT_WHITE,
 };
 
-const StyledMainText = styled.div`
+type MainText = {
+  heading?: string;
+  body?: string;
+};
+
+type NormalModuleProps = MainText;
+
+const NormalModule: React.FC<NormalModuleProps> = ({ heading, body, children }) => (
+  <StyledNormalModule>
+    {heading && <NormalHeading>{heading}</NormalHeading>}
+    {body && <MainTextBody>{body}</MainTextBody>}
+    {children}
+  </StyledNormalModule>
+);
+
+const StyledNormalModule = styled.div`
   margin-bottom: ${getSpacingUnit(7)};
 `;
 
@@ -102,9 +117,14 @@ const MainHeading = styled.div`
   color: ${COLOR.UI_TEXT_NORMAL};
   font-size: 3rem;
   text-align: center;
+  ${media.greaterThan(SCREEN_TYPE.MEDIUM)`
+    & br {
+      display: none;
+    }
+  `}
 `;
 
-const MainTextHeading = styled.h2`
+const NormalHeading = styled.h2`
   margin-bottom: ${getSpacingUnit(4)};
   color: ${COLOR.UI_TEXT_NORMAL};
   font-size: 2.4rem;
@@ -113,6 +133,13 @@ const MainTextHeading = styled.h2`
 
 const MainTextBody = styled.p`
   color: ${COLOR.UI_TEXT_WEAKEN};
+  white-space: pre-wrap;
+`;
+
+const AccessTextBody = styled.p`
+  margin-bottom: ${getSpacingUnit(2)};
+  color: ${COLOR.UI_TEXT_WEAKEN};
+  text-align: center;
   white-space: pre-wrap;
 `;
 

@@ -14,7 +14,7 @@ import { ComponentsSeoQuery } from '@/types';
 type MetaItem = JSX.IntrinsicElements['meta'];
 
 type Props = {
-  title: string;
+  title?: string;
   description?: string;
   lang?: string;
   meta?: MetaItem[];
@@ -37,6 +37,7 @@ export const SEO: React.FC<Props> = ({ title, description, lang = 'en', meta = [
 
   const metaDescription = description || site?.siteMetadata?.description || '';
   const author = site?.siteMetadata?.author || '';
+  const defaultTitle = site?.siteMetadata?.title;
 
   return (
     <Helmet
@@ -44,7 +45,8 @@ export const SEO: React.FC<Props> = ({ title, description, lang = 'en', meta = [
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site?.siteMetadata?.title}`}
+      titleTemplate={`%s | ${defaultTitle}`}
+      defaultTitle={defaultTitle || ''}
       meta={[
         {
           name: 'description',
