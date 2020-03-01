@@ -70,7 +70,12 @@ const IndexPage: React.FC = () => {
         </NormalModule>
       </MainTextContainer>
       <FlexContainer>
-        <Button href="#">お問い合わせ</Button>
+        <Button
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfjxLjnxQisMgAS-sHCZKoWDC9Bk_gcqviljuTE8NkNvX94Jg/viewform"
+          target="_blank"
+        >
+          お問い合わせ
+        </Button>
       </FlexContainer>
     </BaseLayout>
   );
