@@ -2609,7 +2609,7 @@ export type UseCaseImagesQuery = { useCase1FImage: Maybe<{ childImageSharp: Mayb
 export type TeaserInfoQueryVariables = {};
 
 
-export type TeaserInfoQuery = { settingYaml: Maybe<{ teaserInfo: Maybe<{ mainTexts: Maybe<Array<Maybe<Pick<SettingYamlTeaserInfoMainTexts, 'heading' | 'body'>>>> }> }>, architectureImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
+export type TeaserInfoQuery = { settingYaml: Maybe<{ teaserInfo: Maybe<{ mainTexts: Maybe<Array<Maybe<Pick<SettingYamlTeaserInfoMainTexts, 'heading' | 'body'>>>> }> }>, architectureImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<GatsbyImageSharpFluid_NoBase64Fragment> }> }> };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

@@ -38,6 +38,8 @@ export const FaqModule: React.FC = () => {
 
   const [currentFaqId, setCurrentFaqId] = useState<number | null>(null);
 
+  console.log(data);
+
   const faqList: FaqList = faqListBase ? (faqListBase as FaqList) : [];
   return (
     <Module title="よくある質問">

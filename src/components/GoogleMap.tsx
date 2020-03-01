@@ -49,15 +49,17 @@ export const GoogleMap: React.FC = () => {
 
 const MapContainer = styled.div`
   width: 100%;
+  height: 50vh;
 
-  &::before {
+  /* &::before {
     content: '';
     display: block;
-    padding-bottom: 60%;
+    padding-bottom: 50%;
+    max-height: 100px;
     ${media.lessThan(SCREEN_TYPE.MEDIUM)`
-      padding-bottom: 100%;
+      padding-bottom: 80%;
     `}
-  }
+  } */
 `;
 
 export default GoogleMap;

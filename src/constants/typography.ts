@@ -34,7 +34,7 @@ const MIXIN = {
         font-size: ${TEXT_SIZE.SMALL}rem;
     `}
     font-weight: 500;
-    line-height: ${LINE_HEIGHT.NORMAL};
+    line-height: ${LINE_HEIGHT.THICK};
   `,
   DISPLAY: css`
     color: ${COLORS.UI_TEXT_MAIN};

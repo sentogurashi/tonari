@@ -7,7 +7,7 @@ import { rgba } from 'polished';
 
 import { BaseLayout, SEO } from '@/layouts';
 import { Logo, GoogleMap } from '@/components';
-import { SCREEN_TYPE } from '@/constants';
+// import { SCREEN_TYPE } from '@/constants';
 
 import { TeaserInfoQuery } from '@/types';
 
@@ -25,7 +25,7 @@ const IndexPage: React.FC = () => {
       architectureImage: file(relativePath: { eq: "architectures.png" }) {
         childImageSharp {
           fluid(maxWidth: 2000) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
@@ -38,7 +38,7 @@ const IndexPage: React.FC = () => {
 
   return (
     <BaseLayout>
-      <SEO title="トップ" />
+      <SEO />
       <HeaderLogo>
         <Logo />
       </HeaderLogo>
@@ -66,9 +66,12 @@ const IndexPage: React.FC = () => {
             <br />
             JR中央線「高円寺」駅 徒歩5分
           </AccessTextBody>
-          <GoogleMap />
         </NormalModule>
       </MainTextContainer>
+
+      <MapContainer>
+        <GoogleMap />
+      </MapContainer>
       <FlexContainer>
         <Button
           href="https://docs.google.com/forms/d/e/1FAIpQLSfjxLjnxQisMgAS-sHCZKoWDC9Bk_gcqviljuTE8NkNvX94Jg/viewform"
@@ -98,6 +101,8 @@ const COLOR = {
   UI_TEXT_WITH_DARK_BACKGROUND: ABSTRACT_WHITE,
 };
 
+const SCREEN_BREAK_POINT = '880px';
+
 type MainText = {
   heading?: string;
   body?: string;
@@ -122,7 +127,7 @@ const MainHeading = styled.div`
   color: ${COLOR.UI_TEXT_NORMAL};
   font-size: 3rem;
   text-align: center;
-  ${media.greaterThan(SCREEN_TYPE.MEDIUM)`
+  ${media.greaterThan(SCREEN_BREAK_POINT)`
     & br {
       display: none;
     }
@@ -177,14 +182,14 @@ const HeroImage = styled.div`
 `;
 
 const HeroImageInner = styled.div`
+  max-width: 670px;
+  margin: 0 auto;
   padding: ${getSpacingUnit(10)} 0;
-  ${media.greaterThan(SCREEN_TYPE.MEDIUM)`
-    margin: 0 auto;
-    max-width: 670px;
-  `}
-  ${media.lessThan(SCREEN_TYPE.MEDIUM)`
+  ${media.lessThan(SCREEN_BREAK_POINT)`
     position: relative;
     margin-top: 200px;
+    margin-left: 0;
+    margin-right: 0;
     width: 500px;
     left: 50%;
     transform: translateX(-50%);
@@ -197,11 +202,15 @@ const HeaderLogo = styled.h1`
   left: 36px;
   width: 120px;
   height: 142px;
-  ${media.lessThan(SCREEN_TYPE.MEDIUM)`
+  ${media.lessThan(SCREEN_BREAK_POINT)`
     top: ${getSpacingUnit(10)};
     left: 50%;
     transform: translateX(-50%);
   `}
+`;
+
+const MapContainer = styled.section`
+  margin-bottom: ${getSpacingUnit(6)};
 `;
 
 const FlexContainer = styled.div`
