@@ -397,7 +397,7 @@ export type File = Node & {
   parent?: Maybe<Node>,
   children: Array<Node>,
   internal: Internal,
-  childrenSettingYaml?: Maybe<Array<Maybe<SettingYaml>>>,
+  childSettingYaml?: Maybe<SettingYaml>,
 };
 
 
@@ -695,50 +695,49 @@ export type FileFieldsEnum =
   'internal___mediaType' |
   'internal___owner' |
   'internal___type' |
-  'childrenSettingYaml' |
-  'childrenSettingYaml___id' |
-  'childrenSettingYaml___parent___id' |
-  'childrenSettingYaml___parent___parent___id' |
-  'childrenSettingYaml___parent___parent___children' |
-  'childrenSettingYaml___parent___children' |
-  'childrenSettingYaml___parent___children___id' |
-  'childrenSettingYaml___parent___children___children' |
-  'childrenSettingYaml___parent___internal___content' |
-  'childrenSettingYaml___parent___internal___contentDigest' |
-  'childrenSettingYaml___parent___internal___description' |
-  'childrenSettingYaml___parent___internal___fieldOwners' |
-  'childrenSettingYaml___parent___internal___ignoreType' |
-  'childrenSettingYaml___parent___internal___mediaType' |
-  'childrenSettingYaml___parent___internal___owner' |
-  'childrenSettingYaml___parent___internal___type' |
-  'childrenSettingYaml___children' |
-  'childrenSettingYaml___children___id' |
-  'childrenSettingYaml___children___parent___id' |
-  'childrenSettingYaml___children___parent___children' |
-  'childrenSettingYaml___children___children' |
-  'childrenSettingYaml___children___children___id' |
-  'childrenSettingYaml___children___children___children' |
-  'childrenSettingYaml___children___internal___content' |
-  'childrenSettingYaml___children___internal___contentDigest' |
-  'childrenSettingYaml___children___internal___description' |
-  'childrenSettingYaml___children___internal___fieldOwners' |
-  'childrenSettingYaml___children___internal___ignoreType' |
-  'childrenSettingYaml___children___internal___mediaType' |
-  'childrenSettingYaml___children___internal___owner' |
-  'childrenSettingYaml___children___internal___type' |
-  'childrenSettingYaml___internal___content' |
-  'childrenSettingYaml___internal___contentDigest' |
-  'childrenSettingYaml___internal___description' |
-  'childrenSettingYaml___internal___fieldOwners' |
-  'childrenSettingYaml___internal___ignoreType' |
-  'childrenSettingYaml___internal___mediaType' |
-  'childrenSettingYaml___internal___owner' |
-  'childrenSettingYaml___internal___type' |
-  'childrenSettingYaml___teaserInfo___mainTexts' |
-  'childrenSettingYaml___teaserInfo___mainTexts___heading' |
-  'childrenSettingYaml___teaserInfo___mainTexts___body' |
-  'childrenSettingYaml___moduleInfo___faq___faqList' |
-  'childrenSettingYaml___moduleInfo___contact___selectOptions';
+  'childSettingYaml___id' |
+  'childSettingYaml___parent___id' |
+  'childSettingYaml___parent___parent___id' |
+  'childSettingYaml___parent___parent___children' |
+  'childSettingYaml___parent___children' |
+  'childSettingYaml___parent___children___id' |
+  'childSettingYaml___parent___children___children' |
+  'childSettingYaml___parent___internal___content' |
+  'childSettingYaml___parent___internal___contentDigest' |
+  'childSettingYaml___parent___internal___description' |
+  'childSettingYaml___parent___internal___fieldOwners' |
+  'childSettingYaml___parent___internal___ignoreType' |
+  'childSettingYaml___parent___internal___mediaType' |
+  'childSettingYaml___parent___internal___owner' |
+  'childSettingYaml___parent___internal___type' |
+  'childSettingYaml___children' |
+  'childSettingYaml___children___id' |
+  'childSettingYaml___children___parent___id' |
+  'childSettingYaml___children___parent___children' |
+  'childSettingYaml___children___children' |
+  'childSettingYaml___children___children___id' |
+  'childSettingYaml___children___children___children' |
+  'childSettingYaml___children___internal___content' |
+  'childSettingYaml___children___internal___contentDigest' |
+  'childSettingYaml___children___internal___description' |
+  'childSettingYaml___children___internal___fieldOwners' |
+  'childSettingYaml___children___internal___ignoreType' |
+  'childSettingYaml___children___internal___mediaType' |
+  'childSettingYaml___children___internal___owner' |
+  'childSettingYaml___children___internal___type' |
+  'childSettingYaml___internal___content' |
+  'childSettingYaml___internal___contentDigest' |
+  'childSettingYaml___internal___description' |
+  'childSettingYaml___internal___fieldOwners' |
+  'childSettingYaml___internal___ignoreType' |
+  'childSettingYaml___internal___mediaType' |
+  'childSettingYaml___internal___owner' |
+  'childSettingYaml___internal___type' |
+  'childSettingYaml___teaserInfo___mainTexts' |
+  'childSettingYaml___teaserInfo___mainTexts___heading' |
+  'childSettingYaml___teaserInfo___mainTexts___body' |
+  'childSettingYaml___moduleInfo___faq___faqList' |
+  'childSettingYaml___moduleInfo___contact___selectOptions';
 
 export type FileFilterInput = {
   birthtime?: Maybe<DateQueryOperatorInput>,
@@ -780,7 +779,7 @@ export type FileFilterInput = {
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
-  childrenSettingYaml?: Maybe<SettingYamlFilterListInput>,
+  childSettingYaml?: Maybe<SettingYamlFilterInput>,
 };
 
 export type FileGroupConnection = {
@@ -1426,7 +1425,7 @@ export type QueryFileArgs = {
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
-  childrenSettingYaml?: Maybe<SettingYamlFilterListInput>
+  childSettingYaml?: Maybe<SettingYamlFilterInput>
 };
 
 
@@ -1515,8 +1514,6 @@ export type QuerySiteArgs = {
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>,
-  port?: Maybe<IntQueryOperatorInput>,
-  host?: Maybe<StringQueryOperatorInput>,
   polyfill?: Maybe<BooleanQueryOperatorInput>,
   pathPrefix?: Maybe<StringQueryOperatorInput>,
   buildTime?: Maybe<DateQueryOperatorInput>
@@ -1740,10 +1737,6 @@ export type SettingYamlFilterInput = {
   moduleInfo?: Maybe<SettingYamlModuleInfoFilterInput>,
 };
 
-export type SettingYamlFilterListInput = {
-  elemMatch?: Maybe<SettingYamlFilterInput>,
-};
-
 export type SettingYamlGroupConnection = {
   totalCount: Scalars['Int'],
   edges: Array<SettingYamlEdge>,
@@ -1842,8 +1835,6 @@ export type Site = Node & {
   children: Array<Node>,
   internal: Internal,
   siteMetadata?: Maybe<SiteSiteMetadata>,
-  port?: Maybe<Scalars['Int']>,
-  host?: Maybe<Scalars['String']>,
   polyfill?: Maybe<Scalars['Boolean']>,
   pathPrefix?: Maybe<Scalars['String']>,
   buildTime?: Maybe<Scalars['Date']>,
@@ -1975,8 +1966,7 @@ export type SiteFieldsEnum =
   'siteMetadata___description' |
   'siteMetadata___author' |
   'siteMetadata___googleApiKey' |
-  'port' |
-  'host' |
+  'siteMetadata___siteUrl' |
   'polyfill' |
   'pathPrefix' |
   'buildTime';
@@ -1987,8 +1977,6 @@ export type SiteFilterInput = {
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>,
-  port?: Maybe<IntQueryOperatorInput>,
-  host?: Maybe<StringQueryOperatorInput>,
   polyfill?: Maybe<BooleanQueryOperatorInput>,
   pathPrefix?: Maybe<StringQueryOperatorInput>,
   buildTime?: Maybe<DateQueryOperatorInput>,
@@ -2178,6 +2166,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___resolve' |
   'pluginCreator___name' |
   'pluginCreator___version' |
+  'pluginCreator___pluginOptions___exclude' |
   'pluginCreator___pluginOptions___name' |
   'pluginCreator___pluginOptions___path' |
   'pluginCreator___pluginOptions___short_name' |
@@ -2375,6 +2364,7 @@ export type SitePluginFieldsEnum =
   'resolve' |
   'name' |
   'version' |
+  'pluginOptions___exclude' |
   'pluginOptions___name' |
   'pluginOptions___path' |
   'pluginOptions___short_name' |
@@ -2502,6 +2492,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
+  exclude?: Maybe<Array<Maybe<Scalars['String']>>>,
   name?: Maybe<Scalars['String']>,
   path?: Maybe<Scalars['String']>,
   short_name?: Maybe<Scalars['String']>,
@@ -2525,6 +2516,7 @@ export type SitePluginPluginOptionsAliasFilterInput = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+  exclude?: Maybe<StringQueryOperatorInput>,
   name?: Maybe<StringQueryOperatorInput>,
   path?: Maybe<StringQueryOperatorInput>,
   short_name?: Maybe<StringQueryOperatorInput>,
@@ -2549,6 +2541,7 @@ export type SiteSiteMetadata = {
   description?: Maybe<Scalars['String']>,
   author?: Maybe<Scalars['String']>,
   googleApiKey?: Maybe<Scalars['String']>,
+  siteUrl?: Maybe<Scalars['String']>,
 };
 
 export type SiteSiteMetadataFilterInput = {
@@ -2556,6 +2549,7 @@ export type SiteSiteMetadataFilterInput = {
   description?: Maybe<StringQueryOperatorInput>,
   author?: Maybe<StringQueryOperatorInput>,
   googleApiKey?: Maybe<StringQueryOperatorInput>,
+  siteUrl?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SiteSortInput = {

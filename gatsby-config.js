@@ -11,11 +11,18 @@ module.exports = {
       '杉並区・高円寺にある銭湯「小杉湯」のとなり。銭湯が街のお風呂であるように、街に開かれたもう一つの家のような場所です。',
     author: 'ogwtkhr',
     googleApiKey: process.env.GOOGLE_API_KEY,
+    siteUrl: 'https://kosugiyu-tonari.com',
   },
   plugins: [
     'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/develop'],
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
