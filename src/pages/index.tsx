@@ -49,6 +49,18 @@ const IndexPage: React.FC = () => {
           />
         </HeroImageInner>
       </HeroImage>
+      <Notice>
+        <NoticeHeader>3月27日〜29日 営業休止のお知らせ</NoticeHeader>
+        <p>
+          東京都の新型コロナウイルスに伴う外出自粛要請を受け、下記の3日間につき、営業休止とさせていただきます。
+        </p>
+        <NoticeList>
+          <NoticeListItem>3月27日（金）</NoticeListItem>
+          <NoticeListItem>3月28日（土）</NoticeListItem>
+          <NoticeListItem>3月29日（日）</NoticeListItem>
+        </NoticeList>
+        <p>ご迷惑をおかけしますが、何卒ご理解のほど、よろしくお願いいたします。</p>
+      </Notice>
       <MainHeading>
         「小杉湯となり」
         <br />
@@ -102,6 +114,7 @@ const COLOR = {
 };
 
 const SCREEN_BREAK_POINT = '880px';
+const CONTENT_MAX_WIDTH = '480px';
 
 type MainText = {
   heading?: string;
@@ -117,6 +130,31 @@ const NormalModule: React.FC<NormalModuleProps> = ({ heading, body, children }) 
     {children}
   </StyledNormalModule>
 );
+
+const Notice = styled.article`
+  max-width: ${CONTENT_MAX_WIDTH};
+  margin: 0 auto 64px;
+  padding: 16px;
+  color: #de1b1b;
+`;
+
+const NoticeHeader = styled.h2`
+  margin-bottom: 16px;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+`;
+
+const NoticeList = styled.ul`
+  margin: 8px 0;
+  text-align: center;
+`;
+
+const NoticeListItem = styled.li`
+  &::before {
+    content: '・';
+  }
+`;
 
 const StyledNormalModule = styled.div`
   margin-bottom: ${getSpacingUnit(7)};
@@ -154,7 +192,7 @@ const AccessTextBody = styled.p`
 `;
 
 const MainTextContainer = styled.article`
-  max-width: 480px;
+  max-width: ${CONTENT_MAX_WIDTH};
   margin: 0 auto;
   padding: 0 ${getSpacingUnit(2)};
 `;
