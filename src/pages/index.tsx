@@ -52,7 +52,7 @@ const IndexPage: React.FC = () => {
       <Notice>
         <NoticeHeader>3月27日〜29日 営業休止のお知らせ</NoticeHeader>
         <p>
-          東京都の新型コロナウイルスに伴う外出自粛要請を受け、下記の3日間につき、営業休止とさせていただきます。
+          新型コロナウイルス感染拡大にともなう東京都の外出自粛要請を受け、下記の3日間につき、営業休止とさせていただきます。
         </p>
         <NoticeList>
           <NoticeListItem>3月27日（金）</NoticeListItem>
