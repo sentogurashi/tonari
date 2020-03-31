@@ -4,12 +4,15 @@ import GatsbyImage, { FluidObject } from 'gatsby-image';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { rgba } from 'polished';
+import { Twitter } from 'styled-icons/boxicons-logos';
 
 import { BaseLayout, SEO } from '@/layouts';
 import { Logo, GoogleMap } from '@/components';
 // import { SCREEN_TYPE } from '@/constants';
 
 import { TeaserInfoQuery } from '@/types';
+
+const URL_TWITTER = 'https://twitter.com/kosugiyu_tonari';
 
 const IndexPage: React.FC = () => {
   const teaserInfo: TeaserInfoQuery = useStaticQuery(graphql`
@@ -42,6 +45,11 @@ const IndexPage: React.FC = () => {
       <HeaderLogo>
         <Logo />
       </HeaderLogo>
+      <SnsIcons>
+        <SnsLink href={URL_TWITTER} target="_blank" rel="noopener noreferrer">
+          <Twitter />
+        </SnsLink>
+      </SnsIcons>
       <HeroImage>
         <HeroImageInner>
           <GatsbyImage
@@ -50,15 +58,19 @@ const IndexPage: React.FC = () => {
         </HeroImageInner>
       </HeroImage>
       <Notice>
-        <NoticeHeader>3月27日〜29日 営業休止のお知らせ</NoticeHeader>
+        <NoticeHeader>営業時間短縮のお知らせ</NoticeHeader>
         <p>
-          新型コロナウイルス感染拡大にともなう東京都の外出自粛要請を受け、下記の3日間につき、営業休止とさせていただきます。
+          新型コロナウイルス感染拡大にともない、3月30日〜4月1日の3日間につき、時間を短縮して（17:00〜22:00）の営業とさせていただきます。
+          <br />
+          また、1F、2Fともに通常の半数程度の席数での営業となります。
         </p>
-        <NoticeList>
-          <NoticeListItem>3月27日（金）</NoticeListItem>
-          <NoticeListItem>3月28日（土）</NoticeListItem>
-          <NoticeListItem>3月29日（日）</NoticeListItem>
-        </NoticeList>
+        <p>
+          4月3日以降の営業につきましては、あらためて
+          <a href={URL_TWITTER} target="_blank" rel="noopener noreferrer">
+            公式Twitter
+          </a>
+          などでお知らせいたします。
+        </p>
         <p>ご迷惑をおかけしますが、何卒ご理解のほど、よろしくお願いいたします。</p>
       </Notice>
       <MainHeading>
@@ -100,17 +112,24 @@ const ABSTRACT_BLACK = '#000000';
 const ABSTRACT_WHITE = '#ffffff';
 const SEMANTIC_MAIN = rgba(ABSTRACT_BLACK, 0.75);
 const SEMANTIC_WEAKEN = rgba(ABSTRACT_BLACK, 0.55);
+const BLAND_GRAY = '#343534';
 
 const getSpacingUnit = (value: number): string => `${value * 8}px`;
 
 const COLOR = {
   ABSTRACT_BLACK,
   ABSTRACT_WHITE,
+  BLAND_GRAY,
   SEMANTIC_MAIN,
   SEMANTIC_WEAKEN,
   UI_TEXT_NORMAL: SEMANTIC_MAIN,
   UI_TEXT_WEAKEN: SEMANTIC_WEAKEN,
   UI_TEXT_WITH_DARK_BACKGROUND: ABSTRACT_WHITE,
+};
+
+const LAYER = {
+  BASE: 1,
+  OVER: 2,
 };
 
 const SCREEN_BREAK_POINT = '880px';
@@ -136,6 +155,13 @@ const Notice = styled.article`
   margin: 0 auto 64px;
   padding: 16px;
   color: #de1b1b;
+
+  & a {
+    &:link,
+    &:visited {
+      color: #de1b1b;
+    }
+  }
 `;
 
 const NoticeHeader = styled.h2`
@@ -145,16 +171,16 @@ const NoticeHeader = styled.h2`
   text-align: center;
 `;
 
-const NoticeList = styled.ul`
-  margin: 8px 0;
-  text-align: center;
-`;
+// const NoticeList = styled.ul`
+//   margin: 8px 0;
+//   text-align: center;
+// `;
 
-const NoticeListItem = styled.li`
-  &::before {
-    content: '・';
-  }
-`;
+// const NoticeListItem = styled.li`
+//   &::before {
+//     content: '・';
+//   }
+// `;
 
 const StyledNormalModule = styled.div`
   margin-bottom: ${getSpacingUnit(7)};
@@ -216,6 +242,7 @@ const Button = styled.a`
 
 const HeroImage = styled.div`
   position: relative;
+  z-index: ${LAYER.BASE};
   overflow: hidden;
 `;
 
@@ -236,6 +263,7 @@ const HeroImageInner = styled.div`
 
 const HeaderLogo = styled.h1`
   position: absolute;
+  z-index: ${LAYER.OVER};
   top: 36px;
   left: 36px;
   width: 120px;
@@ -244,6 +272,37 @@ const HeaderLogo = styled.h1`
     top: ${getSpacingUnit(10)};
     left: 50%;
     transform: translateX(-50%);
+  `}
+`;
+
+const SnsIcons = styled.h1`
+  position: absolute;
+  z-index: ${LAYER.OVER};
+  top: 16px;
+  right: 16px;
+  width: auto;
+  height: 40px;
+`;
+
+const SnsLink = styled.a`
+  display: block;
+  width: 40px;
+  height: 40px;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+
+  &:link,
+  &:visited {
+    color: ${COLOR.BLAND_GRAY};
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  ${media.lessThan(SCREEN_BREAK_POINT)`
+    width: 32px;
+    height: 32px;
   `}
 `;
 
