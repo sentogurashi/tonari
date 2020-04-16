@@ -58,26 +58,22 @@ const IndexPage: React.FC = () => {
         </HeroImageInner>
       </HeroImage>
       <Notice>
-        <NoticeHeader>営業時間短縮のお知らせ</NoticeHeader>
+        <NoticeHeader>緊急事態宣言発令中の営業について</NoticeHeader>
         <p>
-          新型コロナウイルス感染拡大にともない、当面の間、平日・土曜日は（17:00〜22:00）の営業とさせていただきます。
+          新型コロナウイルス感染拡大にともなう緊急事態宣言の発令を受け、当面の間、テイクアウト販売のみの営業とさせていただきます。
           <br />
-          また、1F、2Fともに通常の半数程度の席数での営業となります。
-        </p>
-        <p>
           今後の営業につきましては、随時
           <a href={URL_TWITTER} target="_blank" rel="noopener noreferrer">
             公式Twitter
           </a>
           などでお知らせいたします。
         </p>
-        <p>ご迷惑をおかけしますが、何卒ご理解のほど、よろしくお願いいたします。</p>
       </Notice>
-      <MainHeading>
+      {/* <MainHeading>
         「小杉湯となり」
         <br />
         プレオープンのお知らせ
-      </MainHeading>
+      </MainHeading> */}
       <MainTextContainer>
         {mainTexts.map(
           ({ heading, body }): JSX.Element => (
@@ -152,7 +148,7 @@ const NormalModule: React.FC<NormalModuleProps> = ({ heading, body, children }) 
 
 const Notice = styled.article`
   max-width: ${CONTENT_MAX_WIDTH};
-  margin: 0 auto 64px;
+  margin: 0 auto 56px;
   padding: 16px;
   color: #de1b1b;
 
@@ -186,17 +182,17 @@ const StyledNormalModule = styled.div`
   margin-bottom: ${getSpacingUnit(7)};
 `;
 
-const MainHeading = styled.div`
-  margin-bottom: ${getSpacingUnit(4)};
-  color: ${COLOR.UI_TEXT_NORMAL};
-  font-size: 3rem;
-  text-align: center;
-  ${media.greaterThan(SCREEN_BREAK_POINT)`
-    & br {
-      display: none;
-    }
-  `}
-`;
+// const MainHeading = styled.div`
+//   margin-bottom: ${getSpacingUnit(4)};
+//   color: ${COLOR.UI_TEXT_NORMAL};
+//   font-size: 3rem;
+//   text-align: center;
+//   ${media.greaterThan(SCREEN_BREAK_POINT)`
+//     & br {
+//       display: none;
+//     }
+//   `}
+// `;
 
 const NormalHeading = styled.h2`
   margin-bottom: ${getSpacingUnit(4)};
