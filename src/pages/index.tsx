@@ -17,15 +17,14 @@ const URL_TWITTER = 'https://twitter.com/kosugiyu_tonari';
 const IndexPage: React.FC = () => {
   const teaserInfo: TeaserInfoQuery = useStaticQuery(graphql`
     query TeaserInfo {
-      settingYaml {
-        teaserInfo {
-          mainTexts {
-            heading
-            body
+      architectureImage: file(relativePath: { eq: "architectures.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 2000) {
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
-      architectureImage: file(relativePath: { eq: "architectures.png" }) {
+      takeoutImage: file(relativePath: { eq: "takeout_food.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 2000) {
             ...GatsbyImageSharpFluid_noBase64
@@ -35,9 +34,9 @@ const IndexPage: React.FC = () => {
     }
   `);
 
-  const mainTextsBase = teaserInfo.settingYaml?.teaserInfo?.mainTexts;
+  // const mainTextsBase = teaserInfo.settingYaml?.teaserInfo?.mainTexts;
 
-  const mainTexts = mainTextsBase ? (mainTextsBase as MainText[]) : [];
+  // const mainTexts = mainTextsBase ? (mainTextsBase as MainText[]) : [];
 
   return (
     <BaseLayout>
@@ -69,17 +68,45 @@ const IndexPage: React.FC = () => {
           などでお知らせいたします。
         </p>
       </Notice>
-      {/* <MainHeading>
-        「小杉湯となり」
-        <br />
-        プレオープンのお知らせ
-      </MainHeading> */}
+
       <MainTextContainer>
-        {mainTexts.map(
-          ({ heading, body }): JSX.Element => (
-            <NormalModule key={heading} heading={heading} body={body} />
-          ),
-        )}
+        <NormalModule>
+          <NormalHeading>テイクアウト販売</NormalHeading>
+          <MainTextBody>
+            昼・夕方に、お弁当・惣菜のテイクアウト販売を行います。
+            <br />
+            週替りで栄養満点の手作りごはんを、ぜひご自宅でお楽しみください。
+          </MainTextBody>
+        </NormalModule>
+        <InlineImageContainer>
+          <GatsbyImage fluid={teaserInfo?.takeoutImage?.childImageSharp?.fluid as FluidObject} />
+        </InlineImageContainer>
+        <ListModule
+          title="価格:"
+          list={['お弁当 750円', 'メインのおかず 600円', '小鉢のおかず 300円']}
+        />
+        <ListModule
+          title="販売時間: "
+          list={['12:00〜14:00（小杉湯となり前にて販売）', '17:00〜20:00（小杉湯前にて販売）']}
+        />
+        <ListModule title="定休日:" list={['毎週木曜日']} />
+        <NormalModule>※売り切れ次第終了となります。</NormalModule>
+
+        <NormalModule>
+          <NormalHeading>小杉湯となりについて</NormalHeading>
+          <MainTextBody>
+            2020年3月16日、銭湯のあるくらしをコンセプトにした、「小杉湯となり」がオープンしました。
+          </MainTextBody>
+          <MainTextBody>
+            場所は、杉並区・高円寺にある銭湯「小杉湯」のとなり。銭湯が街のお風呂であるように、街に開かれたもう一つの家のような場所です。
+          </MainTextBody>
+          <MainTextBody>
+            いつもより大きな風呂に入ったあとに、手づくりのご飯を食べたり、仕事をした後にくつろいだり。自分の家に大きな台所や書斎がなくても、ここに来れば、くらしの余白を感じられる場所を目指しています。
+          </MainTextBody>
+          <MainTextBody>
+            また、銭湯や高円寺がはじめての方にも、その魅力を伝えていく拠点になればと考えています。
+          </MainTextBody>
+        </NormalModule>
         <NormalModule heading="アクセス">
           <AccessTextBody>
             〒166-0002 東京都杉並区高円寺北3丁目32−16−2
@@ -131,20 +158,42 @@ const LAYER = {
 const SCREEN_BREAK_POINT = '880px';
 const CONTENT_MAX_WIDTH = '480px';
 
-type MainText = {
+const NormalModule: React.FC<{
   heading?: string;
   body?: string;
-};
-
-type NormalModuleProps = MainText;
-
-const NormalModule: React.FC<NormalModuleProps> = ({ heading, body, children }) => (
-  <StyledNormalModule>
+}> = ({ heading, body, children }) => (
+  <StyledModule>
     {heading && <NormalHeading>{heading}</NormalHeading>}
     {body && <MainTextBody>{body}</MainTextBody>}
     {children}
-  </StyledNormalModule>
+  </StyledModule>
 );
+
+const ListModule: React.FC<{
+  title: string;
+  list: string[];
+}> = ({ title, list }) => (
+  <StyledModule>
+    <dl>
+      <ListModuleTitle>{title}</ListModuleTitle>
+      <dd>
+        <NormalList>
+          {list.map(item => (
+            <NormalListItem key={item}>{item}</NormalListItem>
+          ))}
+        </NormalList>
+      </dd>
+    </dl>
+  </StyledModule>
+);
+
+const ListModuleTitle = styled.dt`
+  font-weight: bold;
+`;
+
+const NormalList = styled.ul``;
+
+const NormalListItem = styled.li``;
 
 const Notice = styled.article`
   max-width: ${CONTENT_MAX_WIDTH};
@@ -167,19 +216,15 @@ const NoticeHeader = styled.h2`
   text-align: center;
 `;
 
-// const NoticeList = styled.ul`
-//   margin: 8px 0;
-//   text-align: center;
-// `;
+const StyledModule = styled.div`
+  margin-bottom: ${getSpacingUnit(5)};
+  color: ${COLOR.UI_TEXT_WEAKEN};
+`;
 
-// const NoticeListItem = styled.li`
-//   &::before {
-//     content: '・';
-//   }
-// `;
-
-const StyledNormalModule = styled.div`
-  margin-bottom: ${getSpacingUnit(7)};
+const InlineImageContainer = styled.div`
+  margin-bottom: ${getSpacingUnit(5)};
+  overflow: hidden;
+  border-radius: 10px;
 `;
 
 // const MainHeading = styled.div`
@@ -202,8 +247,7 @@ const NormalHeading = styled.h2`
 `;
 
 const MainTextBody = styled.p`
-  color: ${COLOR.UI_TEXT_WEAKEN};
-  white-space: pre-wrap;
+  margin-bottom: ${getSpacingUnit(2)};
 `;
 
 const AccessTextBody = styled.p`

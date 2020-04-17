@@ -733,9 +733,6 @@ export type FileFieldsEnum =
   'childSettingYaml___internal___mediaType' |
   'childSettingYaml___internal___owner' |
   'childSettingYaml___internal___type' |
-  'childSettingYaml___teaserInfo___mainTexts' |
-  'childSettingYaml___teaserInfo___mainTexts___heading' |
-  'childSettingYaml___teaserInfo___mainTexts___body' |
   'childSettingYaml___moduleInfo___faq___faqList' |
   'childSettingYaml___moduleInfo___contact___selectOptions';
 
@@ -1584,7 +1581,6 @@ export type QuerySettingYamlArgs = {
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
-  teaserInfo?: Maybe<SettingYamlTeaserInfoFilterInput>,
   moduleInfo?: Maybe<SettingYamlModuleInfoFilterInput>
 };
 
@@ -1601,7 +1597,6 @@ export type SettingYaml = Node & {
   parent?: Maybe<Node>,
   children: Array<Node>,
   internal: Internal,
-  teaserInfo?: Maybe<SettingYamlTeaserInfo>,
   moduleInfo?: Maybe<SettingYamlModuleInfo>,
 };
 
@@ -1719,9 +1714,6 @@ export type SettingYamlFieldsEnum =
   'internal___mediaType' |
   'internal___owner' |
   'internal___type' |
-  'teaserInfo___mainTexts' |
-  'teaserInfo___mainTexts___heading' |
-  'teaserInfo___mainTexts___body' |
   'moduleInfo___faq___faqList' |
   'moduleInfo___faq___faqList___id' |
   'moduleInfo___faq___faqList___question' |
@@ -1735,7 +1727,6 @@ export type SettingYamlFilterInput = {
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
-  teaserInfo?: Maybe<SettingYamlTeaserInfoFilterInput>,
   moduleInfo?: Maybe<SettingYamlModuleInfoFilterInput>,
 };
 
@@ -1807,28 +1798,6 @@ export type SettingYamlModuleInfoFilterInput = {
 export type SettingYamlSortInput = {
   fields?: Maybe<Array<Maybe<SettingYamlFieldsEnum>>>,
   order?: Maybe<Array<Maybe<SortOrderEnum>>>,
-};
-
-export type SettingYamlTeaserInfo = {
-  mainTexts?: Maybe<Array<Maybe<SettingYamlTeaserInfoMainTexts>>>,
-};
-
-export type SettingYamlTeaserInfoFilterInput = {
-  mainTexts?: Maybe<SettingYamlTeaserInfoMainTextsFilterListInput>,
-};
-
-export type SettingYamlTeaserInfoMainTexts = {
-  heading?: Maybe<Scalars['String']>,
-  body?: Maybe<Scalars['String']>,
-};
-
-export type SettingYamlTeaserInfoMainTextsFilterInput = {
-  heading?: Maybe<StringQueryOperatorInput>,
-  body?: Maybe<StringQueryOperatorInput>,
-};
-
-export type SettingYamlTeaserInfoMainTextsFilterListInput = {
-  elemMatch?: Maybe<SettingYamlTeaserInfoMainTextsFilterInput>,
 };
 
 export type Site = Node & {
@@ -2615,7 +2584,7 @@ export type UseCaseImagesQuery = { useCase1FImage: Maybe<{ childImageSharp: Mayb
 export type TeaserInfoQueryVariables = {};
 
 
-export type TeaserInfoQuery = { settingYaml: Maybe<{ teaserInfo: Maybe<{ mainTexts: Maybe<Array<Maybe<Pick<SettingYamlTeaserInfoMainTexts, 'heading' | 'body'>>>> }> }>, architectureImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<GatsbyImageSharpFluid_NoBase64Fragment> }> }> };
+export type TeaserInfoQuery = { architectureImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<GatsbyImageSharpFluid_NoBase64Fragment> }> }>, takeoutImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<GatsbyImageSharpFluid_NoBase64Fragment> }> }> };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
