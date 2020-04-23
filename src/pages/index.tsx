@@ -87,7 +87,7 @@ const IndexPage: React.FC = () => {
         />
         <ListModule
           title="販売時間: "
-          list={['12:00〜14:00（小杉湯となり前にて販売）', '17:00〜20:00（小杉湯前にて販売）']}
+          list={['11:00〜14:00（小杉湯となり前にて販売）', '17:00〜20:00（小杉湯前にて販売）']}
         />
         <ListModule title="定休日:" list={['毎週木曜日']} />
         <NormalModule>※売り切れ次第終了となります。</NormalModule>
