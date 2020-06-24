@@ -57,11 +57,11 @@ const IndexPage: React.FC = () => {
         </HeroImageInner>
       </HeroImage>
       <Notice>
-        <NoticeHeader>緊急事態宣言発令中の営業について</NoticeHeader>
+        <NoticeHeader>今後の営業について</NoticeHeader>
         <p>
-          新型コロナウイルス感染拡大にともなう緊急事態宣言の発令を受け、当面の間、テイクアウト販売のみの営業とさせていただきます。
+          新型コロナウイルス感染防止対策として、ソーシャルディスタンスを確保するため、当面の間、会員に限定しての営業とさせていただきます。
           <br />
-          今後の営業につきましては、随時
+          会員の募集や今後の営業につきましては、随時
           <a href={URL_TWITTER} target="_blank" rel="noopener noreferrer">
             公式Twitter
           </a>
@@ -70,28 +70,6 @@ const IndexPage: React.FC = () => {
       </Notice>
 
       <MainTextContainer>
-        <NormalModule>
-          <NormalHeading>テイクアウト販売</NormalHeading>
-          <MainTextBody>
-            昼・夕方に、お弁当・惣菜のテイクアウト販売を行います。
-            <br />
-            週替りで栄養満点の手作りごはんを、ぜひご自宅でお楽しみください。
-          </MainTextBody>
-        </NormalModule>
-        <InlineImageContainer>
-          <GatsbyImage fluid={teaserInfo?.takeoutImage?.childImageSharp?.fluid as FluidObject} />
-        </InlineImageContainer>
-        <ListModule
-          title="価格:"
-          list={['お弁当 750円', 'メインのおかず 600円', '小鉢のおかず 300円']}
-        />
-        <ListModule
-          title="販売時間: "
-          list={['11:00〜14:00（小杉湯となり前にて販売）', '17:00〜20:00（小杉湯前にて販売）']}
-        />
-        <ListModule title="定休日:" list={['毎週木曜日']} />
-        <NormalModule>※売り切れ次第終了となります。</NormalModule>
-
         <NormalModule>
           <NormalHeading>小杉湯となりについて</NormalHeading>
           <MainTextBody>
