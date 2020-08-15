@@ -4,15 +4,16 @@ import GatsbyImage, { FluidObject } from 'gatsby-image';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { rgba } from 'polished';
-import { Twitter } from 'styled-icons/boxicons-logos';
+import { Twitter as TwitterIcon } from 'styled-icons/boxicons-logos';
 
 import { BaseLayout, SEO } from '@/layouts';
-import { Logo, GoogleMap } from '@/components';
+import { Logo, GoogleMap, NoteIcon } from '@/components';
 // import { SCREEN_TYPE } from '@/constants';
 
 import { TeaserInfoQuery } from '@/types';
 
 const URL_TWITTER = 'https://twitter.com/kosugiyu_tonari';
+const URL_NOTE = 'https://note.com/sentogurashi';
 
 const IndexPage: React.FC = () => {
   const teaserInfo: TeaserInfoQuery = useStaticQuery(graphql`
@@ -45,8 +46,11 @@ const IndexPage: React.FC = () => {
         <Logo />
       </HeaderLogo>
       <SnsIcons>
+        <SnsLink href={URL_NOTE} target="_blank" rel="noopener noreferrer">
+          <NoteIcon />
+        </SnsLink>
         <SnsLink href={URL_TWITTER} target="_blank" rel="noopener noreferrer">
-          <Twitter />
+          <TwitterIcon />
         </SnsLink>
       </SnsIcons>
       <HeroImage>
@@ -56,22 +60,27 @@ const IndexPage: React.FC = () => {
           />
         </HeroImageInner>
       </HeroImage>
-      <Notice>
-        <NoticeHeader>今後の営業について</NoticeHeader>
-        <p>
-          新型コロナウイルス感染防止対策として、ソーシャルディスタンスを確保するため、当面の間、会員に限定しての営業とさせていただきます。
-          <br />
-          会員の募集や今後の営業につきましては、随時
-          <a href={URL_TWITTER} target="_blank" rel="noopener noreferrer">
-            公式Twitter
-          </a>
-          などでお知らせいたします。
-        </p>
-      </Notice>
 
       <MainTextContainer>
         <NormalModule>
-          <NormalHeading>小杉湯となりについて</NormalHeading>
+          <NormalHeading>今後の営業について</NormalHeading>
+          <MainTextBody>
+            今後の営業について新型コロナウイルス感染防止対策として、当面の間は、店内のご利用を会員限定とさせていただきます。
+            <br />
+            週末は、会員以外の方もご利用できる軒下マルシェやドリンク・軽食の販売等を予定しております。
+            <br />
+            今後の営業や会員の募集につきましては、随時
+            <a href={URL_TWITTER} target="_blank" rel="noopener noreferrer">
+              公式Twitter
+            </a>
+            や
+            <a href={URL_NOTE} target="_blank" rel="noopener noreferrer">
+              公式note
+            </a>
+            などでお知らせしますので、よろしくお願いします。 などでお知らせいたします。
+          </MainTextBody>
+        </NormalModule>
+        <NormalModule heading="小杉湯となりについて">
           <MainTextBody>
             2020年3月16日、銭湯のあるくらしをコンセプトにした、「小杉湯となり」がオープンしました。
           </MainTextBody>
@@ -81,8 +90,25 @@ const IndexPage: React.FC = () => {
           <MainTextBody>
             いつもより大きな風呂に入ったあとに、手づくりのご飯を食べたり、仕事をした後にくつろいだり。自分の家に大きな台所や書斎がなくても、ここに来れば、くらしの余白を感じられる場所を目指しています。
           </MainTextBody>
+        </NormalModule>
+        <NormalModule heading="営業時間・定休日">
           <MainTextBody>
-            また、銭湯や高円寺がはじめての方にも、その魅力を伝えていく拠点になればと考えています。
+            <s>平日・土曜: 15時～23時</s>
+            <br />
+            <s>日曜: 9時～23時</s>
+            <br />
+            <s>※ラストオーダー22時</s>
+            <br />
+            <s>木曜定休</s>
+            <br />
+            <NoticeText>※しばらくの間、店内利用は会員限定といたします。</NoticeText>
+          </MainTextBody>
+        </NormalModule>
+        <NormalModule heading="席数">
+          <MainTextBody>
+            1F: 10席
+            <br />
+            2F: 10席程度
           </MainTextBody>
         </NormalModule>
         <NormalModule heading="アクセス">
@@ -126,12 +152,12 @@ const COLOR = {
   UI_TEXT_NORMAL: SEMANTIC_MAIN,
   UI_TEXT_WEAKEN: SEMANTIC_WEAKEN,
   UI_TEXT_WITH_DARK_BACKGROUND: ABSTRACT_WHITE,
-};
+} as const;
 
 const LAYER = {
   BASE: 1,
   OVER: 2,
-};
+} as const;
 
 const SCREEN_BREAK_POINT = '880px';
 const CONTENT_MAX_WIDTH = '480px';
@@ -173,30 +199,14 @@ const NormalList = styled.ul``;
 
 const NormalListItem = styled.li``;
 
-const Notice = styled.article`
-  max-width: ${CONTENT_MAX_WIDTH};
-  margin: 0 auto 56px;
-  padding: 16px;
-  color: #de1b1b;
-
-  & a {
-    &:link,
-    &:visited {
-      color: #de1b1b;
-    }
-  }
-`;
-
-const NoticeHeader = styled.h2`
-  margin-bottom: 16px;
-  font-size: 2rem;
-  font-weight: 500;
-  text-align: center;
-`;
-
 const StyledModule = styled.div`
   margin-bottom: ${getSpacingUnit(5)};
   color: ${COLOR.UI_TEXT_WEAKEN};
+
+  & a:link,
+  & a:visited {
+    color: ${COLOR.UI_TEXT_WEAKEN};
+  }
 `;
 
 const InlineImageContainer = styled.div`
@@ -204,18 +214,6 @@ const InlineImageContainer = styled.div`
   overflow: hidden;
   border-radius: 10px;
 `;
-
-// const MainHeading = styled.div`
-//   margin-bottom: ${getSpacingUnit(4)};
-//   color: ${COLOR.UI_TEXT_NORMAL};
-//   font-size: 3rem;
-//   text-align: center;
-//   ${media.greaterThan(SCREEN_BREAK_POINT)`
-//     & br {
-//       display: none;
-//     }
-//   `}
-// `;
 
 const NormalHeading = styled.h2`
   margin-bottom: ${getSpacingUnit(4)};
@@ -226,6 +224,10 @@ const NormalHeading = styled.h2`
 
 const MainTextBody = styled.p`
   margin-bottom: ${getSpacingUnit(2)};
+`;
+
+const NoticeText = styled.span`
+  color: #de1b1b;
 `;
 
 const AccessTextBody = styled.p`
@@ -294,18 +296,20 @@ const HeaderLogo = styled.h1`
 `;
 
 const SnsIcons = styled.h1`
+  display: flex;
   position: absolute;
   z-index: ${LAYER.OVER};
   top: 16px;
   right: 16px;
   width: auto;
-  height: 40px;
+  height: 32px;
 `;
 
 const SnsLink = styled.a`
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
+  margin-right: 20px;
   transition: opacity 0.5s ease;
   opacity: 1;
 
@@ -318,10 +322,9 @@ const SnsLink = styled.a`
     opacity: 0.8;
   }
 
-  ${media.lessThan(SCREEN_BREAK_POINT)`
-    width: 32px;
-    height: 32px;
-  `}
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 const MapContainer = styled.section`
