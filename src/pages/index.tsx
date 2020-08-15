@@ -65,7 +65,7 @@ const IndexPage: React.FC = () => {
         <NormalModule>
           <NormalHeading>今後の営業について</NormalHeading>
           <MainTextBody>
-            今後の営業について新型コロナウイルス感染防止対策として、当面の間は、店内のご利用を会員限定とさせていただきます。
+            新型コロナウイルス感染防止対策として、当面の間は店内のご利用を会員限定とさせていただきます。
             <br />
             週末は、会員以外の方もご利用できる軒下マルシェやドリンク・軽食の販売等を予定しております。
             <br />
@@ -77,7 +77,7 @@ const IndexPage: React.FC = () => {
             <a href={URL_NOTE} target="_blank" rel="noopener noreferrer">
               公式note
             </a>
-            などでお知らせしますので、よろしくお願いします。 などでお知らせいたします。
+            などでお知らせいたします。
           </MainTextBody>
         </NormalModule>
         <NormalModule heading="小杉湯となりについて">
