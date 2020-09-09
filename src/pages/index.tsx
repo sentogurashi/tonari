@@ -62,24 +62,6 @@ const IndexPage: React.FC = () => {
       </HeroImage>
 
       <MainTextContainer>
-        <NormalModule>
-          <NormalHeading>今後の営業について</NormalHeading>
-          <MainTextBody>
-            新型コロナウイルス感染防止対策として、当面の間は店内のご利用を会員限定とさせていただきます。
-            <br />
-            週末は、会員以外の方もご利用できる軒下マルシェやドリンク・軽食の販売等を予定しております。
-            <br />
-            今後の営業や会員の募集につきましては、随時
-            <a href={URL_TWITTER} target="_blank" rel="noopener noreferrer">
-              公式Twitter
-            </a>
-            や
-            <a href={URL_NOTE} target="_blank" rel="noopener noreferrer">
-              公式note
-            </a>
-            などでお知らせいたします。
-          </MainTextBody>
-        </NormalModule>
         <NormalModule heading="小杉湯となりについて">
           <MainTextBody>
             2020年3月16日、銭湯のあるくらしをコンセプトにした、「小杉湯となり」がオープンしました。
@@ -93,15 +75,9 @@ const IndexPage: React.FC = () => {
         </NormalModule>
         <NormalModule heading="営業時間・定休日">
           <MainTextBody>
-            <s>平日・土曜: 15時～23時</s>
+            平日・土/日曜: 9時～<s>23時</s> 22時
             <br />
-            <s>日曜: 9時～23時</s>
-            <br />
-            <s>※ラストオーダー22時</s>
-            <br />
-            <s>木曜定休</s>
-            <br />
-            <NoticeText>※しばらくの間、店内利用は会員限定といたします。</NoticeText>
+            木曜定休
           </MainTextBody>
         </NormalModule>
         <NormalModule heading="席数">
