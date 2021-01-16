@@ -78,6 +78,10 @@ const IndexPage: React.FC = () => {
             平日・土/日曜: 9時～<s>23時</s> 22時
             <br />
             木曜定休
+            <br />
+            <SmallText>
+              ※緊急事態宣言期間中は、20時以降のキッチンの利用・店内での飲食を休止いたします。（食堂の営業を含む）
+            </SmallText>
           </MainTextBody>
         </NormalModule>
         <NormalModule heading="席数">
@@ -149,32 +153,6 @@ const NormalModule: React.FC<{
   </StyledModule>
 );
 
-const ListModule: React.FC<{
-  title: string;
-  list: string[];
-}> = ({ title, list }) => (
-  <StyledModule>
-    <dl>
-      <ListModuleTitle>{title}</ListModuleTitle>
-      <dd>
-        <NormalList>
-          {list.map(item => (
-            <NormalListItem key={item}>{item}</NormalListItem>
-          ))}
-        </NormalList>
-      </dd>
-    </dl>
-  </StyledModule>
-);
-
-const ListModuleTitle = styled.dt`
-  font-weight: bold;
-`;
-
-const NormalList = styled.ul``;
-
-const NormalListItem = styled.li``;
-
 const StyledModule = styled.div`
   margin-bottom: ${getSpacingUnit(5)};
   color: ${COLOR.UI_TEXT_WEAKEN};
@@ -183,12 +161,6 @@ const StyledModule = styled.div`
   & a:visited {
     color: ${COLOR.UI_TEXT_WEAKEN};
   }
-`;
-
-const InlineImageContainer = styled.div`
-  margin-bottom: ${getSpacingUnit(5)};
-  overflow: hidden;
-  border-radius: 10px;
 `;
 
 const NormalHeading = styled.h2`
@@ -202,8 +174,10 @@ const MainTextBody = styled.p`
   margin-bottom: ${getSpacingUnit(2)};
 `;
 
-const NoticeText = styled.span`
-  color: #de1b1b;
+const SmallText = styled.small`
+  display: inline-block;
+  font-size: 80%;
+  line-height: 1.6;
 `;
 
 const AccessTextBody = styled.p`
