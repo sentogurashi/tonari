@@ -80,7 +80,7 @@ const IndexPage: React.FC = () => {
             木曜定休
             <br />
             <SmallText>
-              ※緊急事態宣言期間中は、20時以降のキッチンの利用・店内での飲食を休止いたします。（食堂の営業を含む）
+              ※緊急事態宣言期間中は、20時以降の食堂の営業に加え、キッチンの利用・店内での飲食を休止いたします。
             </SmallText>
           </MainTextBody>
         </NormalModule>
